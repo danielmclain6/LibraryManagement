@@ -1,0 +1,75 @@
+
+
+Due Date Next Friday, Oct 30
+
+
+Gitlab push/pull password: cognixia 
+
+
+Things we need
+- Wireframe
+- ERD already given
+- JSP Views
+- DAO
+- Servlet
+- Exceptions
+- ConnectionManager
+- Halloween theme
+
+
+Priorities
+- Create Maven Project, upload to gitlab
+- Wireframe
+- Routing so we can test front end and backend independently
+
+- Models/DAO
+    - Interface
+    - Implementation
+- DAO unit Testing
+
+- Front end views 
+- Servlet
+
+
+- Darrick
+    - Testing
+    - Front end
+- Cody and Daniel 
+    - Models / DAO
+- Danielle
+    - Front end
+- Lia
+    - Front end
+    - Float
+- Tylen
+    - floater
+
+
+Git commands
+
+Git global setup
+git config --global user.name "Darrick Truong"
+git config --global user.email "truong.darrick@gmail.com"
+
+Create a new repository
+git clone https://gitlab.com/DarrickTruong/librarymanagement.git
+cd librarymanagement
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Push an existing folder
+cd existing_folder
+git init
+git remote add origin https://gitlab.com/DarrickTruong/librarymanagement.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Push an existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://gitlab.com/DarrickTruong/librarymanagement.git
+git push -u origin --all
+git push -u origin --tags
