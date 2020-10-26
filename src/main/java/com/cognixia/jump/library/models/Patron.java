@@ -2,6 +2,7 @@ package com.cognixia.jump.library.models;
 
 public class Patron {
 	
+	private int id;
 	private String first_name;
 	private String last_name;
 	private String username;
@@ -15,6 +16,14 @@ public class Patron {
 		this.username = username;
 		this.password = password;
 		this.account_frozen = account_frozen;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirst_name() {
@@ -59,7 +68,7 @@ public class Patron {
 
 	@Override
 	public String toString() {
-		return "Patron [first_name=" + first_name + ", last_name=" + last_name + ", username=" + username
+		return "Patron [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", username=" + username
 				+ ", password=" + password + ", account_frozen=" + account_frozen + "]";
 	}
 
