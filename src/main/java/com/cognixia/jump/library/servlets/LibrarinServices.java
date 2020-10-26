@@ -25,7 +25,7 @@ public class LibrarinServices extends HttpServlet {
 
 	@Override
 	public void init() {
-//		librarianDao = new LibrarianDao();
+//		librarianDao = new LibrarianDaoImp();
 		Connection conn = ConnectionManager.getConnection();
 	}
 
