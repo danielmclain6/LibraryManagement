@@ -53,7 +53,8 @@ public class PatronServelt extends HttpServlet {
 				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
 		request.setAttribute("isLibrarian", 
 				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("patron.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

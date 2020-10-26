@@ -6,11 +6,10 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 	// where is the path/connection we are going to
-	private static final String URLWindows = "jdbc:mysql://localhost:3306/library";
-	private static final String URLMAC = "";
+	private static final String URL = "jdbc:mysql://localhost:3306/library?serverTimezone=EST5EDT"; // fix me!!
 	private static final String USERNAME = "root";
 	private static final String PASSWORDWindows = "root"; // Windows : root, Mac : Root@123
-	private static final String PASSWORDMac = ""; // Windows : root, Mac : Root@123
+	private static final String PASSWORDMAC = "Root@123"; 
 	
 
 	// singleton example
@@ -21,14 +20,19 @@ public class ConnectionManager {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registered Driver");
 			System.out.println("NEWWWW");
-
-			connect = DriverManager.getConnection(URLWindows, USERNAME, PASSWORDWindows);
+			connect = DriverManager.getConnection(URL, USERNAME, PASSWORDMAC);
 			System.out.println("Connected");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("trying alt creds");
+			try {
+				connect = DriverManager.getConnection(URL, USERNAME, PASSWORDWindows);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				System.out.println("Could not connect to with either creds");
+			}
 		}
 	}
 
