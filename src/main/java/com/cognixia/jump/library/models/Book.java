@@ -1,74 +1,70 @@
 package com.cognixia.jump.library.models;
 
+import java.util.Date;
+
 public class Book {
 	
-	private int id;
-	private String first_name;
-	private String last_name;
-	private String username;
-	private String password;
-	private boolean account_frozen;
+	private String isbn;
+	private String title;
+	private String descr;
+	private boolean rented;
+	private Date added_to_library;
 	
-	public Book(String first_name, String last_name, String username, String password) {
+	public Book(String isbn, String title, String descr, boolean rented, Date added_to_library) {
 		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.username = username;
-		this.password = password;
-		this.account_frozen = true;
+		this.isbn = isbn;
+		this.title = title;
+		this.descr = descr;
+		this.rented = rented;
+		this.added_to_library = added_to_library;
 	}
 
-	public int getId() {
-		return id;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getDescr() {
+		return descr;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 
-	public String getUsername() {
-		return username;
+	public boolean isRented() {
+		return rented;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setRented(boolean rented) {
+		this.rented = rented;
 	}
 
-	public String getPassword() {
-		return password;
+	public Date getAdded_to_library() {
+		return added_to_library;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public boolean isAccount_frozen() {
-		return account_frozen;
-	}
-
-	public void setAccount_frozen(boolean account_frozen) {
-		this.account_frozen = account_frozen;
+	public void setAdded_to_library(Date added_to_library) {
+		this.added_to_library = added_to_library;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", username=" + username
-				+ ", password=" + password + ", account_frozen=" + account_frozen + "]";
+		return "Book [isbn=" + isbn + ", title=" + title + ", descr=" + descr + ", rented=" + rented
+				+ ", added_to_library=" + added_to_library + "]";
 	}
+	
+	
+	
 }

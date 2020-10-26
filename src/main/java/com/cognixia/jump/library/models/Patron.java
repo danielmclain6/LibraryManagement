@@ -1,6 +1,7 @@
 package com.cognixia.jump.library.models;
 
 public class Patron {
+	
 	private String first_name;
 	private String last_name;
 	private String username;
