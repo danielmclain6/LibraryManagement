@@ -4,4 +4,8 @@
 
 <web-app>
   <display-name>Library Manager</display-name>
+  <servlet-mapping>
+  	<servlet-name>LibrarianServices</servlet-name>
+  	<url-pattern>/LibrarianServices</url-pattern>
+  </servlet-mapping>
 </web-app>
