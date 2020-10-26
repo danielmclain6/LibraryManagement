@@ -1,5 +1,10 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%@ include file="header.jsp" %>
+<%@ include file="navBar.jsp" %>
+
+<div class="container">
+    Index    
+</div>
+
+
+
+<%@ include file="footer.jsp" %>

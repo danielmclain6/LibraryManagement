@@ -1,17 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Spooky Spooky libraray</title>
-</head>
-<body>
 
-<h1>Patrons</h1>
+<%@ include file="header.jsp" %>
 
+<div class="container">
+    <h1>Patrons page</h1>
 
+</div>
 
+<%@ include file="footer.jsp" %>
 
-</body>
-</html>
