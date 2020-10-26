@@ -15,6 +15,7 @@
 
 
     <link type="stylesheet" href="static/stylesheets/header.css">
+    <link type="stylesheet" href="static/stylesheets/navBar.css">
     <link type="stylesheet" href="static/stylesheets/footer.css">
     <link type="stylesheet" href="static/stylesheets/index.css">
     <link type="stylesheet" href="static/stylesheets/book.css">
