@@ -18,7 +18,7 @@ import com.cognixia.jump.library.models.Patron;
  */
 
 
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet implements HttpSession{
 	private static final long serialVersionUID = 1L;
 	
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet implements HttpSession{
 				
 				session.setAttribute("isLibrarian", true);
 				session.setAttribute("librarian", lib);
-				response.sendRedirect("");
+				response.sendRedirect("books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
 			}
@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet implements HttpSession{
 				
 				session.setAttribute("isLibrarian", false);
 				session.setAttribute("patron", patron);
-				response.sendRedirect("");
+				response.sendRedirect("books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
 			}
