@@ -84,7 +84,8 @@ public class PatronDAOImp implements PatronDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into patron values(null,?,?,?,?,?)")) 
 		{
-			
+			LibrarianDAOImp ld = new LibrarianDAOImp();
+			ld.searchUserNameUtility(pat.getUsername());
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
 			pstmt.setString(3, pat.getUsername());
@@ -98,6 +99,9 @@ public class PatronDAOImp implements PatronDAO
 			}
 			
 		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		} catch (UsernameAlreadyExistsException e)
 		{
 			e.printStackTrace();
 		} 

@@ -13,6 +13,6 @@ public interface LibrarianDAO
 	
 	public boolean deleteLibrarian(Librarian lib);
 	
-	public boolean updateLibrarian(Librarian lib);
+	public boolean updateLibrarian(Librarian lib) throws UsernameAlreadyExistsException;
 
 }
