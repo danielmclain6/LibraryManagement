@@ -9,8 +9,9 @@ public class Patron {
 	private String password;
 	private boolean account_frozen;
 
-	public Patron(String first_name, String last_name, String username, String password, boolean account_frozen) {
+	public Patron(int id, String first_name, String last_name, String username, String password, boolean account_frozen) {
 		super();
+		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.username = username;
