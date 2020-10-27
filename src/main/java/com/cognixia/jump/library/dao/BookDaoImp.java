@@ -16,8 +16,7 @@ public class BookDaoImp implements BookDao {
 	public static final Connection conn = ConnectionManager.getConnection();
 
 	private static final String SELECT_ALL_BOOKS = "select * from book";
-	private static final String ADD_BOOK = "insert into book(isbn, title, descr,"
-			+ "added_to_library) values(?, ?, ?, ?) ";
+	private static final String ADD_BOOK = "insert into book(isbn, title, descr, rented, added_to_library) values(?, ?, ?, ?, ?)";
 	private static final String GET_BOOK_BY_ISBN = "select * from book where isbn = ?";
 	private static final String UPDATE_BOOK = "update book set title = ?, descr = ? where isbn = ?";
 	private static final String BOOKS_BY_RENT_STATUS = "select * from book where rented = ?";
@@ -58,6 +57,7 @@ public class BookDaoImp implements BookDao {
 		String description = "";
 		boolean rented = false;
 		Date dateAdded = new Date();
+		
 		try (PreparedStatement state = conn.prepareStatement(GET_BOOK_BY_ISBN);
 
 		) {
@@ -92,7 +92,8 @@ public class BookDaoImp implements BookDao {
 			state.setString(1, book.getIsbn());
 			state.setString(2, book.getTitle());
 			state.setString(3, book.getDescr());
-			state.setString(4, java.time.LocalDate.now().toString());
+			state.setBoolean(4, false);
+			state.setString(5, java.time.LocalDate.now().toString());
 
 			if (state.executeUpdate() > 0) {
 				return true;

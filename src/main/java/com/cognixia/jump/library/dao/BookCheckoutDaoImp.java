@@ -38,7 +38,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 	public boolean checkoutBook(Patron p, Book b) {
 		String today = java.time.LocalDate.now().toString();
-		String returnDate = "";
+		String dueDate = "";
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -51,7 +51,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 			// TODO: handle exception
 		}
 		c.add(Calendar.DATE, 30);
-		returnDate = sdf.format(c.getTime());
+		dueDate = sdf.format(c.getTime());
 
 		try (PreparedStatement state = conn.prepareStatement(CHECKOUT_BOOK);
 				PreparedStatement bookState = conn.prepareStatement("update book set rented = 1 where isbn = ?")) {
@@ -59,7 +59,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 			state.setInt(1, p.getId());
 			state.setString(2, b.getIsbn());
 			state.setString(3, today);
-			state.setString(4, returnDate);
+			state.setString(4, dueDate);
 			bookState.setString(1, b.getIsbn());
 			bookState.executeUpdate();
 
