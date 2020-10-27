@@ -86,7 +86,7 @@ Post Routes that should redirect
 	localhost:/delete_book
 		redirect to localhost:/books with book information altered to DB
 	
-	localhost:/checkout_book?book_isbn=0&?patron_id=0
+	localhost:/checkout_book?isbn=0
 		patron_id will come from session, if session does not exist redirect to login page
 		redirect to localhost:/book?isbn=0 <- book they checked out id to see details
 	
@@ -95,6 +95,10 @@ Post Routes that should redirect
 		or
 		redirect to localhost:/patrons?id=0 <- id of newly frozen account
 		depending on where the freeze button was clicked
+
+	localhost:/return_book?isbn='0987654321'
+		this route should only be accesed and avaible to click thouhg librarian access
+
 --------------------------------------------------------------------------------------
 	 
 
