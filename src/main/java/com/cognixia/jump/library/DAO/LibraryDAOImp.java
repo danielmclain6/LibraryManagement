@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.models.Librarian;
 
 public class LibraryDAOImp implements LibrarianDAO
 {
 	private Connection conn = ConnectionManager.getConnection();
 
+	@Override
 	public List<Librarian> getAllLibrarians()
 	{
 		List<Librarian> libList = new ArrayList<>();
@@ -42,28 +44,137 @@ public class LibraryDAOImp implements LibrarianDAO
 		return libList;
 	}
 	
-	public Librarian getLibrarianById(int libId) throws LibrarianNotFoundException
+	@Override
+	public Librarian getLibrarianById(int libId)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Librarian lib = null;
+		
+		try (
+				PreparedStatement pstmt = conn.prepareStatement("select * from librarian where librarian_id = ?");
+			)
+		{
+			pstmt.setInt(1, libId);
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			while(rs.next())
+			{
+				int id = rs.getInt("librarian_id");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				
+				lib = new Librarian(id, username, password);
+				
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return lib;
 	}
 
+	@Override
 	public boolean addLibrarian(Librarian lib)
 	{
-		// TODO Auto-generated method stub
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into librarian values(null,?,?)")) 
+		{
+			
+			pstmt.setString(1, lib.getUsername());
+			pstmt.setString(2, lib.getPassword());
+			
+			int count = pstmt.executeUpdate();
+			
+			if(count > 0) {
+				return true;
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		
 		return false;
 	}
 
-	public boolean deleteLibraian(int libId)
+	@Override
+	public boolean deleteLibrarian(Librarian lib)
 	{
-		// TODO Auto-generated method stub
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from librarian where librarian_id = ?")) 
+		{	
+			pstmt.setInt(1, lib.getId());
+			
+			int count = pstmt.executeUpdate();
+			
+			if(count > 0) 
+			{
+				return true;
+			}
+			
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
+	@Override
 	public boolean updateLibrarian(Librarian lib)
 	{
-		// TODO Auto-generated method stub
+		try(PreparedStatement pstmt = conn.prepareStatement("update librarian set username = ?, password = ? where librarian_id = ?")) 
+		{
+			pstmt.setString(1, lib.getUsername());
+			pstmt.setString(2, lib.getPassword());
+			pstmt.setInt(3, lib.getId());
+			
+			int count = pstmt.executeUpdate();
+			
+			if(count > 0) {
+				return true;
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		
 		return false;
 	}
+	
+//	public static void main(String[] args)
+//	{
+//		LibraryDAOImp test = new LibraryDAOImp();
+//		List<Librarian> libs = test.getAllLibrarians();
+//		
+//		Librarian lib = test.getLibrarianById(1);
+//
+//		for(Librarian l: libs)
+//		{
+//			System.out.println(l);
+//		}
+//		
+//		System.out.println(lib);
+//	//	lib.setUsername("pickles");
+//	//	test.addLibrarian(lib);
+//		
+//	//	lib.setUsername("noodles");
+//		System.out.println(test.deleteLibrarian(lib));
+//		libs = test.getAllLibrarians();
+//		for(Librarian l: libs)
+//		{
+//			System.out.println(l);
+//		}
+//		
+////		libs = test.getAllLibrarians();
+////		
+////		for(Librarian l: libs)
+////		{
+////			System.out.println(l);
+////		}
+//		
+//	}
 
 }

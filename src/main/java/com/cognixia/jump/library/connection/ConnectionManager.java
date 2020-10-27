@@ -9,84 +9,46 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionManager {
+	// where is the path/connection we are going to
+	private static final String URL = "jdbc:mysql://localhost:3306/library?serverTimezone=EST5EDT"; // fix me!!
+	private static final String USERNAME = "root";
+	private static final String PASSWORDWindows = "root"; // Windows : root, Mac : Root@123
+	private static final String PASSWORDMAC = "Root@123"; 
+	
 
-	private static Connection connection; // will be null at moment
+	// singleton example
+	private static Connection connect; // will be null atm
 
 	private static void makeConnection() {
-
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registered Driver");
-			
-			String url;
-			String username;
-			String password;
-			
-			try
-			{
-				Properties props = new Properties();
-				
-				props.load( new FileInputStream("resources/config.properties") );
-				
-				url = props.getProperty("url");
-				username = props.getProperty("username");
-				password = props.getProperty("password");
-			}
-			catch(FileNotFoundException e)
-			{
-				url = "jdbc:mysql://localhost:3306/library?serverTimezone=EST5EDT";
-				username = "root";
-				password = "Root@123";
-			}
-			
-			
-
-			connection = DriverManager.getConnection(url, username, password);
-			System.out.println("Connected.");
+			System.out.println("NEWWWW");
+			connect = DriverManager.getConnection(URL, USERNAME, PASSWORDMAC);
+			System.out.println("Connected");
 
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
-
 		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("trying alt creds");
+			try {
+				connect = DriverManager.getConnection(URL, USERNAME, PASSWORDWindows);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				System.out.println("Could not connect to with either creds");
+			}
 		}
-
 	}
 
+	/**
+	 * this just checks if the singleton object has been connected
+	 * @return Connection object
+	 */
 	public static Connection getConnection() {
-
-		if (connection == null) {
+		if(connect == null) {
 			makeConnection();
 		}
-
-		return connection;
-	}
-
-	public static void main(String[] args) {
-
-		Connection conn = BetterConnectionManager.getConnection();
-
-		// Connection other = BetterConnectionManager.getConnection();
-
-		// work with connection manipulating database
-
-		try {
-			conn.close();
-			System.out.println("Connection closed");
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		return connect;
 	}
 
 }
