@@ -47,6 +47,62 @@ Priorities
     - front/back
 
 
+
+
+------------all routes---------
+
+Get Routes
+	all get routes need to render a jsp file 
+	all get routes need to check HttpSession ad pass the additinal model "userId" and "isLibrarian" for permission notices
+	if web user tries to access url routes that they shouldn't be, check session and reroute them to books or landing page
+
+	localhost:/
+	localhost:/login	
+      * localhost:/books?which_filter=all  or ?which_filter=only_in_library  or ?which_filter=all_currenly_checkedout
+      * localhost:/book?isbn=0	
+	localhost:/patrons
+	localhost:/patron?id=0   - make a way for patron to see they own page and their own page only
+
+* on the localhost:/books and localhost:/book?isbn=0 url 
+  we are going to have a modle that will create a new book and edit the current books
+	
+
+
+Post Routes that should redirect
+	localhost:/register_patron
+		redirect to localhost:/books?which_filter=all with newest patron stored in session
+	
+	localhost:/register_librarian
+		redirect to localhost:/books?which_filter=all with newest librarian stored in session
+	
+	localhost:/logout
+		redirect to localhost:/
+
+	localhost:/insert_book
+		redirect to localhost:/books with newest book added to DB
+	
+	localhost:/edit_book
+		redirect to localhost:/books with book information altered to DB
+
+	localhost:/delete_book
+		redirect to localhost:/books with book information altered to DB
+	
+	localhost:/checkout_book?book_isbn=0&?patron_id=0
+		patron_id will come from session, if session does not exist redirect to login page
+		redirect to localhost:/book?isbn=0 <- book they checked out id to see details
+	
+	localhost:/freeze_patron?id=0
+		redirect to localhost:/patron?id=0 <- id of newly frozen account
+		or
+		redirect to localhost:/patrons?id=0 <- id of newly frozen account
+		depending on where the freeze button was clicked
+--------------------------------------------------------------------------------------
+	 
+
+
+
+
+
 Git commands
 
 Git global setup
