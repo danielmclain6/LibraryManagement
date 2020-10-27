@@ -2,9 +2,8 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h1>Patrons page</h1>
 
+    Books route
 </div>
 
 <%@ include file="footer.jsp" %>
-
