@@ -1,16 +1,15 @@
 
-package com.cognixa.jump.library.dao
+package com.cognixia.jump.library.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cognixia.jump.ConnectionManager.ConnectionManager;
-import com.cognixia.jump.models.Book;
+import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.models.Book;
 
 
 public class BookDaoImp implements BookDao {

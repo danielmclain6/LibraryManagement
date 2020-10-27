@@ -1,4 +1,4 @@
-package com.cognixa.jump.library.dao
+package com.cognixia.jump.library.dao;
 
 
 import java.sql.Connection;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.cognixia.jump.ConnectionManager.ConnectionManager;
-import com.cognixia.jump.models.Book;
-import com.cognixia.jump.models.BookCheckout;
-import com.cognixia.jump.models.Patron;
+import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.models.Book;
+import com.cognixia.jump.library.models.BookCheckout;
+import com.cognixia.jump.library.models.Patron;
 
 public class BookCheckoutDaoImp implements BookCheckoutDao {
 	public static final Connection conn = ConnectionManager.getConnection();
