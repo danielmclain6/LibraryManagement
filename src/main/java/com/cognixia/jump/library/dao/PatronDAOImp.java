@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -177,28 +177,28 @@ public class PatronDAOImp implements PatronDAO
 		return false;
 	}
 	
-	public static void main(String[] args)
-	{
-		PatronDAOImp test = new PatronDAOImp();
-		
-		List<Patron> pats = test.getAllPatrons();
-
-		for(Patron p: pats)
-		{
-			System.out.println(p);
-		}
-		
-		Patron pat = test.getPatronById(1);
-		pat.setUsername("daly");
-		
-		test.updatePatron(pat);
-
-		pats = test.getAllPatrons();
-		
-		for(Patron p: pats)
-		{
-			System.out.println(p);
-		}
-	}
+//	public static void main(String[] args)
+//	{
+//		PatronDAOImp test = new PatronDAOImp();
+//		
+//		List<Patron> pats = test.getAllPatrons();
+//
+//		for(Patron p: pats)
+//		{
+//			System.out.println(p);
+//		}
+//		
+//		Patron pat = test.getPatronById(1);
+//		pat.setUsername("daly");
+//		
+//		test.updatePatron(pat);
+//
+//		pats = test.getAllPatrons();
+//		
+//		for(Patron p: pats)
+//		{
+//			System.out.println(p);
+//		}
+//	}
 
 }

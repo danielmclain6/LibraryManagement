@@ -1,5 +1,5 @@
 
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

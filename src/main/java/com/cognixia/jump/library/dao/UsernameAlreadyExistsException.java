@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 
 public class UsernameAlreadyExistsException extends Exception
 {

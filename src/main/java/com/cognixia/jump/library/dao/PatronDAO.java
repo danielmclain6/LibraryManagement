@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 
 import com.cognixia.jump.library.models.Patron;
 import java.util.List;
@@ -15,4 +15,5 @@ public interface PatronDAO
 	
 	public boolean updatePatron(Patron pat);
 
+	
 }
