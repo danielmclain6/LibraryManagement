@@ -1,5 +1,5 @@
 
-package com.cognixia.jump.library.dao  ; 
+package com.cognixia.jump.library.DAO; 
 
 import java.util.List;
 
