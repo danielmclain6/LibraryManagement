@@ -1,5 +1,6 @@
 package com.cognixia.jump.library.dao;
 
+import com.cognixia.jump.library.utility.Utility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.models.BookCheckoutWithBook;
 import com.cognixia.jump.library.models.Patron;
+import com.cognixia.jump.library.models.PatronHistory;
 
 public class PatronDAOImp implements PatronDAO
 {
@@ -17,7 +20,7 @@ public class PatronDAOImp implements PatronDAO
 	@Override
 	public List<Patron> getAllPatrons()
 	{
-		List<Patron> patList = new ArrayList<>();
+		List<Patron> patList = new ArrayList<Patron>();
 		
 		try (
 				PreparedStatement pstmt = conn.prepareStatement("select * from patron");
@@ -84,8 +87,7 @@ public class PatronDAOImp implements PatronDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into patron values(null,?,?,?,?,?)")) 
 		{
-			LibrarianDAOImp ld = new LibrarianDAOImp();
-			ld.searchUserNameUtility(pat.getUsername());
+			Utility.searchUserNameUtility(pat.getUsername(), conn);
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
 			pstmt.setString(3, pat.getUsername());
@@ -150,8 +152,7 @@ public class PatronDAOImp implements PatronDAO
 			
 			if(!originalUsername.equals(pat.getUsername()))
 			{
-				LibrarianDAOImp ld = new LibrarianDAOImp();
-				ld.searchUserNameUtility(pat.getUsername());
+				Utility.searchUserNameUtility(pat.getUsername(), conn);
 			}
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
@@ -176,29 +177,77 @@ public class PatronDAOImp implements PatronDAO
 		
 		return false;
 	}
-	
-	public static void main(String[] args)
+
+	@Override
+	public Patron getPatronByUsername(String username)
 	{
-		PatronDAOImp test = new PatronDAOImp();
+		Patron pat = null;
 		
-		List<Patron> pats = test.getAllPatrons();
-
-		for(Patron p: pats)
+		try (
+				PreparedStatement pstmt = conn.prepareStatement("select * from patron where username = ?");
+			)
 		{
-			System.out.println(p);
+			pstmt.setString(1, username);
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			while(rs.next())
+			{
+				int id = rs.getInt("patron_id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String password = rs.getString("password");
+				boolean frozen = rs.getBoolean("account_frozen");
+				
+				pat = new Patron(id, firstName, lastName, username, password, frozen);
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
 		}
 		
-		Patron pat = test.getPatronById(1);
-		pat.setUsername("daly");
-		
-		test.updatePatron(pat);
-
-		pats = test.getAllPatrons();
-		
-		for(Patron p: pats)
-		{
-			System.out.println(p);
-		}
+		return pat;
 	}
+
+	@Override
+	public PatronHistory getPatronHistoryById(int patId)
+	{
+		try(PreparedStatement pstmt = conn.prepareStatement("select * from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where patron.patron_id = ?"))
+		{
+			PatronHistory ph;
+			
+			pstmt.setInt(1, patId);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			ph = new PatronHistory(rs.getInt("patron_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getBoolean("account_frozen"));
+			BookCheckoutWithBook bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"), rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
+			ph.addHistory(bc);
+			
+			while(rs.next())
+			{
+				bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"), rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
+				ph.addHistory(bc);
+			}
+			
+			return ph;
+			
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+		
+//	public static void main(String[] args)
+//	{
+//		PatronDAOImp test = new PatronDAOImp();
+//		PatronHistory ph = test.getPatronHistoryById(1);
+//		System.out.println(ph);
+//	}
 
 }

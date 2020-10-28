@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class BookCheckout {
 	
-	private int checkout_id;
-	private int patron_id;
-	private String isbn;
-	private Date checkedout;
-	private Date due_date;
-	private Date returned;
+	protected int checkout_id;
+	protected int patron_id;
+	protected String isbn;
+	protected Date checkedout;
+	protected Date due_date;
+	protected Date returned;
 	
 	public BookCheckout(int patron_id, String isbn, Date checkedout, Date due_date, Date returned) {
 		super();
