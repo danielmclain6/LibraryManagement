@@ -1,5 +1,6 @@
 package com.cognixia.jump.library.dao;
 
+import com.cognixia.jump.library.utility.Utility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,8 +85,7 @@ public class PatronDAOImp implements PatronDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into patron values(null,?,?,?,?,?)")) 
 		{
-			LibrarianDAOImp ld = new LibrarianDAOImp();
-			ld.searchUserNameUtility(pat.getUsername());
+			Utility.searchUserNameUtility(pat.getUsername(), conn);
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
 			pstmt.setString(3, pat.getUsername());
@@ -150,8 +150,7 @@ public class PatronDAOImp implements PatronDAO
 			
 			if(!originalUsername.equals(pat.getUsername()))
 			{
-				LibrarianDAOImp ld = new LibrarianDAOImp();
-				ld.searchUserNameUtility(pat.getUsername());
+				Utility.searchUserNameUtility(pat.getUsername(), conn);
 			}
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());

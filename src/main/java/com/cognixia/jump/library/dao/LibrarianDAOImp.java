@@ -1,5 +1,6 @@
 package com.cognixia.jump.library.dao;
 
+import com.cognixia.jump.library.utility.Utility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,7 +81,7 @@ public class LibrarianDAOImp implements LibrarianDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into librarian values(null,?,?)")) 
 		{
-			searchUserNameUtility(lib.getUsername());
+			Utility.searchUserNameUtility(lib.getUsername(), conn);
 			pstmt.setString(1, lib.getUsername());
 			pstmt.setString(2, lib.getPassword());
 			
@@ -142,7 +143,7 @@ public class LibrarianDAOImp implements LibrarianDAO
 			
 			if(!originalUsername.equals(lib.getUsername()))
 			{
-				searchUserNameUtility(lib.getUsername());
+				Utility.searchUserNameUtility(lib.getUsername(), conn);
 			}
 			
 			
@@ -162,34 +163,6 @@ public class LibrarianDAOImp implements LibrarianDAO
 		} 
 		
 		return false;
-	}
-	
-	protected boolean searchUserNameUtility(String username) throws UsernameAlreadyExistsException
-	{
-		try(
-				PreparedStatement pstmt = conn.prepareStatement("select (select count(*) from librarian where username = ?) + (select count(*) from patron where username = ?) as username_count;")
-		   )
-		{
-			pstmt.setString(1, username);
-			pstmt.setString(2, username);
-			
-			ResultSet rs = pstmt.executeQuery();
-			
-			rs.next();
-			
-			int count = rs.getInt("username_count");
-			
-			if(count > 0)
-			{
-				throw new UsernameAlreadyExistsException(username);
-			}
-			
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-		return false;
-		
 	}
 
 	@Override
