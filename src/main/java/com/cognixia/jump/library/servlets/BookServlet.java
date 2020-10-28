@@ -1,4 +1,4 @@
-package com.cognixia.jump.web;
+package com.cognixia.jump.library.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.BookDao;
 import com.cognixia.jump.library.models.Book;
-import com.cognixia.jump.model.Product;
 
 @WebServlet("/")
 public class BookServlet extends HttpServlet {
