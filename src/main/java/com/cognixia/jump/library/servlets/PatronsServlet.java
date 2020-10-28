@@ -1,7 +1,6 @@
 package com.cognixia.jump.library.servlets;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.dao.PatronDAO;
+import com.cognixia.jump.library.dao.PatronDAOImp;
 import com.cognixia.jump.library.models.Patron;
 
 /**
@@ -22,12 +24,11 @@ import com.cognixia.jump.library.models.Patron;
 @WebServlet("/patrons")
 public class PatronsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private PatronDAO patronDao;
 
 	@Override
 	public void init() {
-//		librarianDao = new LibrarianDao();
-		Connection conn = ConnectionManager.getConnection();
+		patronDao = new PatronDAOImp();
 	}
 
 	@Override
@@ -44,12 +45,15 @@ public class PatronsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
 
-//		List<Paton> patrons = patronDao.getAll();
-		List<Patron> patrons = new ArrayList<Patron>();
-		patrons.add(new Patron("frist naem", "dummy", "dummyuser naem", "fakea a", false) );
+		List<Patron> patrons = patronDao.getAllPatrons();
 		request.setAttribute("patrons", patrons);
+		request.setAttribute("userId", 
+				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
+		request.setAttribute("isLibrarian", 
+				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("patrons.jsp");
 		dispatcher.forward(request, response);
 	}
