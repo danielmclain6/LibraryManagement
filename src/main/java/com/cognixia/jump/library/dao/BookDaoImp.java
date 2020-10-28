@@ -1,5 +1,4 @@
-
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +11,7 @@ import java.util.List;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.models.Book;
 
-public class BookDaoImp implements BookDao {
+public class BookDAOImp implements BookDAO {
 	public static final Connection conn = ConnectionManager.getConnection();
 
 	private static final String SELECT_ALL_BOOKS = "select * from book";
@@ -107,10 +106,10 @@ public class BookDaoImp implements BookDao {
 	}
 
 	// tested and working
-	public boolean deleteBook(Book b) {
+	public boolean deleteBook(String isbn) {
 		try (PreparedStatement state = conn.prepareStatement(DELETE_BOOK)) {
 
-			state.setString(1, b.getIsbn());
+			state.setString(1, isbn);
 			if (state.executeUpdate() > 0) {
 				return true;
 			} else {
