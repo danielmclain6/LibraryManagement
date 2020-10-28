@@ -15,6 +15,8 @@ import com.cognixia.jump.library.dao.BookCheckoutDao;
 import com.cognixia.jump.library.dao.BookCheckoutDaoImp;
 import com.cognixia.jump.library.dao.BookDao;
 import com.cognixia.jump.library.dao.BookDaoImp;
+import com.cognixia.jump.library.dao.PatronDAO;
+import com.cognixia.jump.library.dao.PatronDAOImp;
 import com.cognixia.jump.library.models.Book;
 import com.cognixia.jump.library.models.Patron;
 
@@ -26,11 +28,13 @@ public class CheckoutBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BookCheckoutDao bookcheckoutDao;
 	private BookDao bookDao;
+	private PatronDAO patronDao;
 
 	@Override
 	public void init() {
 		bookcheckoutDao = new BookCheckoutDaoImp();
 		bookDao = new BookDaoImp();
+		patronDao = new PatronDAOImp();
 	}
 
 	@Override
@@ -51,14 +55,15 @@ public class CheckoutBookServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		// check it anyone is in session
-		if (session.getAttribute("user") == null) {
-			// if there is no one in session, then redirect them to login
+		String strId = request.getParameter(("user_id"));
+		if(strId.equals("")) {
+			System.out.println("REDIRECT");
 			response.sendRedirect("/LibraryManager/login");
+			
 		}
-		System.out.println("session.getAttribute('user')");
-		System.out.println(session.getAttribute("user"));
-		Patron p = (Patron) session.getAttribute("user");
+		int id = Integer.parseInt(strId);
+		// check it anyone is in session
+		Patron p = patronDao.getPatronById(id);
 		Book b = bookDao.getBookByIsbn(request.getParameter("isbn"));
 
 //		boolean bool = bookcheckoutDao.checkoutBook(p, b);
