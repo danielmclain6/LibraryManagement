@@ -29,7 +29,9 @@
 		<display-name>BookCheckout</display-name>
 		<description></description>
 		<servlet-class>com.cognixia.jump.library.servlets.BookCheckout</servlet-class>
-
+	</servlet>
+	
+	<servlet>
 		<servlet-name>PatronsServlet</servlet-name>
 		<display-name>PatronsServlet</display-name>
 		<description></description>
@@ -52,6 +54,6 @@
 	<servlet-mapping>
 		<servlet-name>BookCheckout</servlet-name>
 		<url-pattern>/BookCheckout</url-pattern>
-
+	</servlet-mapping>
 
 </web-app>

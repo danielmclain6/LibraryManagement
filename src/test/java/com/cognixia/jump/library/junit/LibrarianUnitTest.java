@@ -13,12 +13,12 @@ import org.junit.Test;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.LibrarianDAO;
-import com.cognixia.jump.library.dao.LibraryDAOImp;
+import com.cognixia.jump.library.dao.LibrarianDAOImp;
 import com.cognixia.jump.library.models.Librarian;
 
 public class LibrarianUnitTest {
 	
-	private LibrarianDAO librarianDAO = new LibraryDAOImp();
+	private LibrarianDAO librarianDAO = new LibrarianDAOImp();
 	private Connection conn;
 	
 	@Before
@@ -46,7 +46,7 @@ public class LibrarianUnitTest {
 				ResultSet rs = pstmt.executeQuery()){
 			rs.next();
 			Librarian lib2 = librarianDAO.getLibrarianById(rs.getInt("librarian_id"));
-			assertTrue(librarianDAO.deleteLibrarian(lib2));
+			assertTrue(librarianDAO.deleteLibrarian(lib2.getId()));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
