@@ -54,13 +54,6 @@ public class BookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
 //		doPost - add book to database or edit book (refer to ProductServlet in CrudProject)
 //
 //		if successful sendRedirect ("book?id=newBookID)
@@ -77,6 +70,13 @@ public class BookServlet extends HttpServlet {
 //
 //				check session to see if patron has logged on before processing checkout
 
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 
