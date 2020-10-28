@@ -61,9 +61,10 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 			state.setString(3, today);
 			state.setString(4, dueDate);
 			bookState.setString(1, b.getIsbn());
-			bookState.executeUpdate();
+			
 
 			if (state.executeUpdate() > 0) {
+				bookState.executeUpdate();
 				return true;
 			} else {
 				return false;
@@ -71,6 +72,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 		return false;
@@ -151,9 +153,9 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 			state.setString(4, returnDate);
 
 			bookState.setString(1, isbn);
-			bookState.executeUpdate();
 
 			if (state.executeUpdate() > 0) {
+				bookState.executeUpdate();
 				return true;
 			} else {
 				return false;

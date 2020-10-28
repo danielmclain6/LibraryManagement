@@ -1,6 +1,6 @@
 package com.cognixia.jump.library.junit;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +42,7 @@ public class PatronUnitTest {
 	}
 	
 	@Test
-	public void addDeletePatron() {
+	public void addDeletePatronTest() {
 		Patron patron = new Patron(-1, "Darrick", "Truong", "darrick_truong", "qwerty", true);
 		assertTrue(patronDAO.addPatron(patron));
 		
@@ -94,7 +95,14 @@ public class PatronUnitTest {
 		assertTrue(patronDAO.deletePatron(patronEdit));
 	}
 	
-	
+//	@After
+//	public void closeConn() {
+//		try {
+//			conn.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 
 }
