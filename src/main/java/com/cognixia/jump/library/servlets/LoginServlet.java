@@ -20,8 +20,6 @@ import com.cognixia.jump.library.models.Patron;
 /**
  * Servlet implementation class Login
  */
-
-
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
