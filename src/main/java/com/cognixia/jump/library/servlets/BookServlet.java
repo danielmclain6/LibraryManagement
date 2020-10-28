@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.BookDao;
+import com.cognixia.jump.library.dao.BookDaoImp;
 import com.cognixia.jump.library.models.Book;
 
 @WebServlet("/")
@@ -25,7 +26,7 @@ public class BookServlet extends HttpServlet {
 	@Override
 	public void init() {
 
-		bookDao = new BookDao();
+		bookDao = new BookDaoImp();
 	}
 
 	@Override
