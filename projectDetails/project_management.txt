@@ -35,15 +35,16 @@ Priorities
 - Darrick
     - Testing
     - Front end
+
 - Cody and Daniel 
     - Models / DAO
 - Danielle
     - Front end
 - Lia
     - Front end
-    - Float
+
 - Tylen
-    - floater
+    - front/back
 
 
 
