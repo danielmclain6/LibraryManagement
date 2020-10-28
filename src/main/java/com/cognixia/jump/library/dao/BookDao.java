@@ -13,7 +13,7 @@ public interface BookDao {
 	
 	public boolean addBook(Book book);
 	
-	public boolean deleteBook(Book b);
+	public boolean deleteBook(String isbn);
 	
 	public boolean isBookAvailable(Book b);
 	

@@ -107,10 +107,10 @@ public class BookDaoImp implements BookDao {
 	}
 
 	// tested and working
-	public boolean deleteBook(Book b) {
+	public boolean deleteBook(String isbn) {
 		try (PreparedStatement state = conn.prepareStatement(DELETE_BOOK)) {
 
-			state.setString(1, b.getIsbn());
+			state.setString(1, isbn);
 			if (state.executeUpdate() > 0) {
 				return true;
 			} else {
