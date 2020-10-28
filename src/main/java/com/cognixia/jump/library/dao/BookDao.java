@@ -1,9 +1,9 @@
 
-package com.cognixia.jump.library.dao   
+package com.cognixia.jump.library.dao  ; 
 
 import java.util.List;
 
-import com.cognixia.jump.model.Book;
+import com.cognixia.jump.library.models.Book;
 
 public interface BookDao {
 
@@ -11,7 +11,7 @@ public interface BookDao {
 	
 	public Book getBookByIsbn(String isbn);
 	
-	public Book addBook(Book book);
+	public boolean addBook(Book book);
 	
 	public boolean deleteBook(Book b);
 	
