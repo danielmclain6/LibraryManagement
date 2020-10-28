@@ -23,7 +23,7 @@ public class ConnectionManager {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Registered Driver");
-			System.out.println("NEWWWW");
+			System.out.println("NEW");
 			connect = DriverManager.getConnection(URL, USERNAME, PASSWORDMAC);
 			System.out.println("Connected");
 
