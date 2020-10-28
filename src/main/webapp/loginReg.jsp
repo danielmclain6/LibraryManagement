@@ -1,6 +1,13 @@
 <%@ include file="header.jsp" %>
 <%@ include file="navBar.jsp" %>
 
+<c:if test = "${not empty errorMessage}">
+	<div class="alert alert-danger" role="alert">
+	  <c:out value="${errorMessage}"></c:out>
+	   <button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+</c:if>
+
 <div class="container">
     <h1>Login/Register</h1>
     <br>
@@ -22,7 +29,7 @@
               <input type="password" class="form-control" name="password"
               id="exampleInputPassword1" placeholder="Password">
             </div>
-            <div class="form-check">
+            <!--  div class="form-check">
                 <div class="row">
                     <input type="radio" name="user_type" value="patron" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Patron</label>
@@ -31,7 +38,7 @@
                     <input type="radio" name="user_type" value="librarian" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Librarian</label>
                 </div>
-            </div>
+            </div-->
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>
