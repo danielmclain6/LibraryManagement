@@ -36,12 +36,14 @@ public class PatronHistory extends Patron
 	public String toString()
 	{
 		String ph = new String("Patron History [id=" + getId() + ", first_name=" + getFirst_name() + ", last_name=" + getLast_name() + ", username=" + getUsername()
-				+ ", password=" + getPassword() + ", account_frozen=" + isAccount_frozen() + "]");
+				+ ", password=" + getPassword() + ", account_frozen=" + isAccount_frozen() + ", history=[\n");
 		
 		for(BookCheckoutWithBook bc: history)
 		{
-			ph.concat(bc.toString());
+			ph = ph.concat("\t" + bc.toString() + "\n");
 		}
+		
+		ph = ph.concat("]]");
 		
 		return ph;
 	}
