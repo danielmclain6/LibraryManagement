@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.dao;
+package com.cognixia.jump.library.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -84,7 +84,8 @@ public class PatronDAOImp implements PatronDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into patron values(null,?,?,?,?,?)")) 
 		{
-			
+			LibrarianDAOImp ld = new LibrarianDAOImp();
+			ld.searchUserNameUtility(pat.getUsername());
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
 			pstmt.setString(3, pat.getUsername());
@@ -98,6 +99,9 @@ public class PatronDAOImp implements PatronDAO
 			}
 			
 		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		} catch (UsernameAlreadyExistsException e)
 		{
 			e.printStackTrace();
 		} 
@@ -131,8 +135,24 @@ public class PatronDAOImp implements PatronDAO
 	@Override
 	public boolean updatePatron(Patron pat)
 	{
-		try(PreparedStatement pstmt = conn.prepareStatement("update patron set first_name = ?, last_name = ?, username = ?, password = ?, account_frozen = ? where patron_id = ?")) 
+		try(
+				PreparedStatement pstmt = conn.prepareStatement("update patron set first_name = ?, last_name = ?, username = ?, password = ?, account_frozen = ? where patron_id = ?");
+				PreparedStatement dbPat = conn.prepareStatement("select * from patron where patron_id = ?");
+			) 
 		{
+			dbPat.setInt(1, pat.getId());
+			
+			ResultSet rs = dbPat.executeQuery();
+			
+			rs.next();
+			
+			String originalUsername = rs.getString("username");
+			
+			if(!originalUsername.equals(pat.getUsername()))
+			{
+				LibrarianDAOImp ld = new LibrarianDAOImp();
+				ld.searchUserNameUtility(pat.getUsername());
+			}
 			pstmt.setString(1, pat.getFirst_name());
 			pstmt.setString(2, pat.getLast_name());
 			pstmt.setString(3, pat.getUsername());
@@ -149,32 +169,36 @@ public class PatronDAOImp implements PatronDAO
 		} catch(SQLException e) 
 		{
 			e.printStackTrace();
+		} catch (UsernameAlreadyExistsException e)
+		{
+			e.printStackTrace();
 		} 
 		
 		return false;
 	}
 	
-//	public static void main(String[] args)
-//	{
-//		PatronDAOImp test = new PatronDAOImp();
-//		
-//		List<Patron> pats = test.getAllPatrons();
-//
-//		for(Patron p: pats)
-//		{
-//			System.out.println(p);
-//		}
-//		
-//		Patron pat = test.getPatronById(11);
-//		
-//		test.deletePatron(pat);
-//
-//		pats = test.getAllPatrons();
-//		
-//		for(Patron p: pats)
-//		{
-//			System.out.println(p);
-//		}
-//	}
+	public static void main(String[] args)
+	{
+		PatronDAOImp test = new PatronDAOImp();
+		
+		List<Patron> pats = test.getAllPatrons();
+
+		for(Patron p: pats)
+		{
+			System.out.println(p);
+		}
+		
+		Patron pat = test.getPatronById(1);
+		pat.setUsername("daly");
+		
+		test.updatePatron(pat);
+
+		pats = test.getAllPatrons();
+		
+		for(Patron p: pats)
+		{
+			System.out.println(p);
+		}
+	}
 
 }

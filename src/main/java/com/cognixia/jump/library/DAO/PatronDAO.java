@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.dao;
+package com.cognixia.jump.library.DAO;
 
 import com.cognixia.jump.library.models.Patron;
 import java.util.List;

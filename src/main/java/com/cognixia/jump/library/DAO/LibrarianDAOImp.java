@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.dao;
+package com.cognixia.jump.library.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.List;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.models.Librarian;
 
-public class LibraryDAOImp implements LibrarianDAO
+public class LibrarianDAOImp implements LibrarianDAO
 {
 	private Connection conn = ConnectionManager.getConnection();
 
@@ -80,7 +80,7 @@ public class LibraryDAOImp implements LibrarianDAO
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into librarian values(null,?,?)")) 
 		{
-			
+			searchUserNameUtility(lib.getUsername());
 			pstmt.setString(1, lib.getUsername());
 			pstmt.setString(2, lib.getPassword());
 			
@@ -93,17 +93,20 @@ public class LibraryDAOImp implements LibrarianDAO
 		} catch(SQLException e) 
 		{
 			e.printStackTrace();
-		} 
+		} catch (UsernameAlreadyExistsException e)
+		{
+			e.printStackTrace();
+		}
 		
 		return false;
 	}
 
 	@Override
-	public boolean deleteLibrarian(Librarian lib)
+	public boolean deleteLibrarian(int libId)
 	{
 		try(PreparedStatement pstmt = conn.prepareStatement("delete from librarian where librarian_id = ?")) 
 		{	
-			pstmt.setInt(1, lib.getId());
+			pstmt.setInt(1, libId);
 			
 			int count = pstmt.executeUpdate();
 			
@@ -124,8 +127,25 @@ public class LibraryDAOImp implements LibrarianDAO
 	@Override
 	public boolean updateLibrarian(Librarian lib)
 	{
-		try(PreparedStatement pstmt = conn.prepareStatement("update librarian set username = ?, password = ? where librarian_id = ?")) 
+		try(
+				PreparedStatement pstmt = conn.prepareStatement("update librarian set username = ?, password = ? where librarian_id = ?");
+				PreparedStatement dbLib = conn.prepareStatement("select * from librarian where librarian_id = ?");
+			) 
 		{
+			dbLib.setInt(1, lib.getId());
+			
+			ResultSet rs = dbLib.executeQuery();
+			
+			rs.next();
+			
+			String originalUsername = rs.getString("username");
+			
+			if(!originalUsername.equals(lib.getUsername()))
+			{
+				searchUserNameUtility(lib.getUsername());
+			}
+			
+			
 			pstmt.setString(1, lib.getUsername());
 			pstmt.setString(2, lib.getPassword());
 			pstmt.setInt(3, lib.getId());
@@ -136,7 +156,7 @@ public class LibraryDAOImp implements LibrarianDAO
 				return true;
 			}
 			
-		} catch(SQLException e) 
+		} catch(SQLException | UsernameAlreadyExistsException e) 
 		{
 			e.printStackTrace();
 		} 
@@ -144,37 +164,47 @@ public class LibraryDAOImp implements LibrarianDAO
 		return false;
 	}
 	
+	protected boolean searchUserNameUtility(String username) throws UsernameAlreadyExistsException
+	{
+		try(
+				PreparedStatement pstmt = conn.prepareStatement("select (select count(*) from librarian where username = ?) + (select count(*) from patron where username = ?) as username_count;")
+		   )
+		{
+			pstmt.setString(1, username);
+			pstmt.setString(2, username);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			int count = rs.getInt("username_count");
+			
+			if(count > 0)
+			{
+				throw new UsernameAlreadyExistsException(username);
+			}
+			
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 //	public static void main(String[] args)
 //	{
-//		LibraryDAOImp test = new LibraryDAOImp();
-//		List<Librarian> libs = test.getAllLibrarians();
+//		LibrarianDAOImp test = new LibrarianDAOImp();
+//		List<Librarian> libList = test.getAllLibrarians();
 //		
-//		Librarian lib = test.getLibrarianById(1);
-//
-//		for(Librarian l: libs)
+//		for(Librarian l: libList)
 //		{
 //			System.out.println(l);
 //		}
 //		
-//		System.out.println(lib);
-//	//	lib.setUsername("pickles");
-//	//	test.addLibrarian(lib);
-//		
-//	//	lib.setUsername("noodles");
-//		System.out.println(test.deleteLibrarian(lib));
-//		libs = test.getAllLibrarians();
-//		for(Librarian l: libs)
-//		{
-//			System.out.println(l);
-//		}
-//		
-////		libs = test.getAllLibrarians();
-////		
-////		for(Librarian l: libs)
-////		{
-////			System.out.println(l);
-////		}
-//		
+//		Librarian l = test.getLibrarianById(1);
+//		l.setUsername("librarian2");
+//		test.updateLibrarian(l);
 //	}
 
 }
