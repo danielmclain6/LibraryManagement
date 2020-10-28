@@ -39,10 +39,22 @@
         <h1>Register</h1>
         <form method="post" action="register">
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="exampleInputEmail1">Username</label>
               <input type="text" class="form-control" name="username"
               id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input type="text" class="form-control" name="first_name"
+              id="first_name" aria-describedby="first_name" placeholder="ex. Casper">
+              <small id="first_name" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">LastName</label>
+              <input type="text" class="form-control" name="last_name"
+              id="last_name" aria-describedby="emailHelp" placeholder="ex. The Ghost">
+              <small id="last_name" class="form-text text-muted">alsdk</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -50,8 +62,14 @@
               id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <div class="row">
+                    <input type="radio" name="user_type" value="patron" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Patron</label>
+                </div>
+                <div class="row">
+                    <input type="radio" name="user_type" value="librarian" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Librarian</label>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

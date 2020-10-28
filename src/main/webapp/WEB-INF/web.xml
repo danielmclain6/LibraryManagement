@@ -55,6 +55,18 @@
 		<description></description>
 		<servlet-class>com.cognixia.jump.library.servlets.SingleBook</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CheckoutBookServlet</servlet-name>
+		<display-name>CheckoutBookServlet</display-name>
+		<description></description>
+		<servlet-class>com.cognixia.jump.library.servlets.CheckoutBookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RetrunBookServlet</servlet-name>
+		<display-name>RetrunBookServlet</display-name>
+		<description></description>
+		<servlet-class>com.cognixia.jump.library.servlets.RetrunBookServlet</servlet-class>
+	</servlet>
 
 
 	<servlet-mapping>
@@ -84,6 +96,14 @@
 	<servlet-mapping>
 		<servlet-name>SingleBook</servlet-name>
 		<url-pattern>/SingleBook</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutBookServlet</servlet-name>
+		<url-pattern>/CheckoutBookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RetrunBookServlet</servlet-name>
+		<url-pattern>/RetrunBookServlet</url-pattern>
 	</servlet-mapping>
 
 

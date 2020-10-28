@@ -35,12 +35,14 @@ public class LoginServlet extends HttpServlet {
 	}
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// rendering template
 		RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// logic for login
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String userType = request.getParameter("user_type");

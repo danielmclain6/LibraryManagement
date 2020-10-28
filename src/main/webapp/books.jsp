@@ -28,7 +28,7 @@
         </p>
         <p>added_to_library = <c:out value="${book.added_to_library}"></c:out>
         </p>
-        <a href="one_book?isbn=${book.isbn}" class="btn btn-outline-primary">BookDetails</a>
+        <a href="book?isbn=${book.isbn}" class="btn btn-outline-primary">BookDetails</a>
         <hr>
 
         <p class="text-danger">

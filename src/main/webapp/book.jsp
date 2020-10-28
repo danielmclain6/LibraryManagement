@@ -10,7 +10,7 @@ Book
     <a href="">Book not avaiable</a>
 </c:if>
 <c:if test="${!book.rented}">
-    <a href="checkout_book?book_isbn=${book.isbn}&?patron_id=${userId.id}">Checkout book</a>
+    <a href="checkout_book?book_isbn=${book.isbn}">Checkout book</a>
 </c:if>
 
 
