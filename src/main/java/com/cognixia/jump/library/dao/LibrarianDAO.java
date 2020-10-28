@@ -9,6 +9,8 @@ public interface LibrarianDAO
 	
 	public Librarian getLibrarianById(int libId);
 	
+	public Librarian getLibrarianByUsername(String username);
+	
 	public boolean addLibrarian(Librarian lib);
 	
 	public boolean deleteLibrarian(int libId);

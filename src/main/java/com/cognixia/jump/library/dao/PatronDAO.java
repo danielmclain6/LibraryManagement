@@ -9,11 +9,11 @@ public interface PatronDAO
 	
 	public Patron getPatronById(int patId);
 	
+	public Patron getPatronByUsername(String username);
+	
 	public boolean addPatron(Patron pat);
 	
 	public boolean deletePatron(Patron pat);
 	
 	public boolean updatePatron(Patron pat);
-
-	
 }

@@ -176,6 +176,38 @@ public class PatronDAOImp implements PatronDAO
 		
 		return false;
 	}
+
+	@Override
+	public Patron getPatronByUsername(String username)
+	{
+		Patron pat = null;
+		
+		try (
+				PreparedStatement pstmt = conn.prepareStatement("select * from patron where username = ?");
+			)
+		{
+			pstmt.setString(1, username);
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			while(rs.next())
+			{
+				int id = rs.getInt("patron_id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String password = rs.getString("password");
+				boolean frozen = rs.getBoolean("account_frozen");
+				
+				pat = new Patron(id, firstName, lastName, username, password, frozen);
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return pat;
+	}
 	
 //	public static void main(String[] args)
 //	{

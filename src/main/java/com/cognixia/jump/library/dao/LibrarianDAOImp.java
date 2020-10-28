@@ -191,6 +191,36 @@ public class LibrarianDAOImp implements LibrarianDAO
 		return false;
 		
 	}
+
+	@Override
+	public Librarian getLibrarianByUsername(String username)
+	{
+		Librarian lib = null;
+		
+		try (
+				PreparedStatement pstmt = conn.prepareStatement("select * from librarian where username = ?");
+			)
+		{
+			pstmt.setString(1, username);
+			
+			ResultSet rs = pstmt.executeQuery(); 
+			
+			while(rs.next())
+			{
+				int id = rs.getInt("librarian_id");
+				String password = rs.getString("password");
+				
+				lib = new Librarian(id, username, password);
+				
+			}
+			
+		} catch(SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return lib;
+	}
 	
 //	public static void main(String[] args)
 //	{
