@@ -22,7 +22,7 @@ import com.cognixia.jump.library.models.Book;
  * Servlet implementation class PatronServelt
  */
 @WebServlet("/patron")
-public class PatronServelt extends HttpServlet {
+public class PatronServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
