@@ -1,5 +1,6 @@
 package com.cognixia.jump.library.dao;
 
+import com.cognixia.jump.library.models.Book;
 import com.cognixia.jump.library.models.Patron;
 import com.cognixia.jump.library.models.PatronHistory;
 
@@ -24,4 +25,8 @@ public interface PatronDAO
 	public boolean freezePatron(Patron pat);
 	
 	public PatronHistory getPatronHistoryById(int patId);
+
+	public List<Patron> getAllAvailablePatrons();
+	
+	public List<Patron> getAllFrozenPatrons();
 }

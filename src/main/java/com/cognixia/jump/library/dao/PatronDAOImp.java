@@ -6,9 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
+import com.cognixia.jump.library.models.Book;
 import com.cognixia.jump.library.models.BookCheckoutWithBook;
 import com.cognixia.jump.library.models.Patron;
 import com.cognixia.jump.library.models.PatronHistory;
@@ -265,7 +267,56 @@ public class PatronDAOImp implements PatronDAO
 		
 	}
 	
+	public List<Patron> getAllAvailablePatrons() {
+		List<Patron> patrons = new ArrayList<>();
+		ResultSet rs = null;
+		try (PreparedStatement state = conn.prepareStatement("select * from patron where account_frozen = ?")) {
+			state.setString(1, "false");
+			rs = state.executeQuery();
+
+			while (rs.next()) {
+
+				int id = rs.getInt("patron_id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				boolean frozen = rs.getBoolean("account_frozen");
+				
+				patrons.add(new Patron(id, firstName, lastName, username, password, frozen));
+				
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		return patrons;
+	}
 	
+	
+	public List<Patron> getAllFrozenPatrons() {
+		List<Patron> patrons = new ArrayList<>();
+		ResultSet rs = null;
+		try (PreparedStatement state = conn.prepareStatement("select * from patron where account_frozen = ?")) {
+			state.setString(1, "true");
+			rs = state.executeQuery();
+
+			while (rs.next()) {
+
+				int id = rs.getInt("patron_id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				boolean frozen = rs.getBoolean("account_frozen");
+				
+				patrons.add(new Patron(id, firstName, lastName, username, password, frozen));
+				
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		return patrons;
+	}
 		
 //	public static void main(String[] args)
 //	{

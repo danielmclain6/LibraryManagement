@@ -219,7 +219,7 @@ public class BookDaoImp implements BookDao {
 				String isbn = rs.getString("isbn");
 				String title = rs.getString("title");
 				String description = rs.getString("descr");
-				boolean rented = true;
+				boolean rented = false;
 				Date dateAdded = rs.getDate("added_to_library");
 				rentedBooks.add(new Book(isbn, title, description, rented, dateAdded));
 			}
