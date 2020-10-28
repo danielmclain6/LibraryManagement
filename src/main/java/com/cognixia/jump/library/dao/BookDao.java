@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.cognixia.jump.library.models.Book;
 
-public interface BookDAO {
+public interface BookDao {
 
 	public List<Book> getAllBooks();
 

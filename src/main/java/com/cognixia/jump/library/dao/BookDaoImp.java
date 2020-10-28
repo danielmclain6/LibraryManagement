@@ -11,7 +11,7 @@ import java.util.List;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.models.Book;
 
-public class BookDAOImp implements BookDAO {
+public class BookDaoImp implements BookDao {
 	public static final Connection conn = ConnectionManager.getConnection();
 
 	private static final String SELECT_ALL_BOOKS = "select * from book";

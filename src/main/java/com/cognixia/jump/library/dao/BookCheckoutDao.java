@@ -1,4 +1,4 @@
-package com.cognixia.jump.library.DAO;
+package com.cognixia.jump.library.dao;
 import java.util.List;
 
 import com.cognixia.jump.library.models.Book;
