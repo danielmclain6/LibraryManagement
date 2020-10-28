@@ -12,21 +12,22 @@
 			<div class="row justify-content-between">
 				<ul class="navbar-nav">
 					<li class="nav-item nav-link">
-						<a class="btn btn-outline-primary" href="/books">Books</a>
+						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
 					</li>
 					<li class="nav-item nav-link">
-						<a class="btn btn-outline-primary" href="/addBook">Add</a>
+						<a class="btn btn-outline-primary" href="/LibraryManager/addBook">Add</a>
 					</li>
 					<li class="nav-item nav-link">
-						<a class="btn btn-outline-primary" href="/">Patrons</a>
+						<a class="btn btn-outline-primary" href="/LibraryManager">Patrons</a>
 					</li>
 				</ul>
 				<div class="navbar-nav">
-					<c:if test="${userId}">
-						<a class="nav-item nav-link btn btn-outline-primary" href="/logout">LogOut</a>
+					<c:if test="${user != null}">
+						welcome, <c:out value="${user.username}"></c:out>
+						<a class="nav-item nav-link btn btn-outline-primary" href="/LibraryManager/logout">LogOut</a>
 					</c:if>
-					<c:if test="${userId == null}">
-						<a class="nav-item nav-link btn btn-outline-primary" href="/login">LogIn</a>
+					<c:if test="${user == null}">
+						<a class="nav-item nav-link btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
 					</c:if>
 				</div>
 			</div>

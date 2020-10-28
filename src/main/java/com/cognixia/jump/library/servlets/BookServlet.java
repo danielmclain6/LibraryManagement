@@ -2,6 +2,7 @@ package com.cognixia.jump.library.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.BookDao;
@@ -67,11 +69,39 @@ public class BookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String action = request.getParameter("which_filter");
+		List<Book> allBooks = new ArrayList<Book>();
 
-		String action = request.getServletPath();
+		if(action == null || action.equals("all")) {
+			allBooks = bookDao.getAllBooks();
+		} else if(action.equals("all_rented")) {
+			allBooks = bookDao.getAllRentedBooks();
+		} else if(action.equals("all_available")) {
+			allBooks = bookDao.getAllAvailableBooks();
+		}
 
+		System.out.println(action + " < - action");
+		System.out.println("called listBooks, allBooks = " + allBooks);
+
+		request.setAttribute("books", allBooks);
+		request.setAttribute("userId", 
+				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
+		request.setAttribute("isLibrarian", 
+				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("books.jsp");
+		System.out.println("sent");
+		dispatcher.forward(request, response);
+		
+
+	}
+
+	private void listAllBooks(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = "blah";
 		switch (action) {
-
+		
 		case "/books":
 			listAllBooks(request, response);
 			break;
@@ -97,23 +127,12 @@ public class BookServlet extends HttpServlet {
 			listAllAvailableBooks(request, response);
 			break;
 		default: // default will take you to the index.jsp page
-			response.sendRedirect("/");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
 			break;
 		}
 
-	}
-
-	private void listAllBooks(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		List<Book> allBooks = bookDao.getAllBooks();
-		System.out.println("called listBooks, allBooks = " + allBooks);
-
-		request.setAttribute("allBooks", allBooks);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("books.jsp");
-		System.out.println("sent");
-		dispatcher.forward(request, response);
+		
 	}
 
 	private void getBookByIsbn(HttpServletRequest request, HttpServletResponse response)

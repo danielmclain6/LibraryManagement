@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	}
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 			
 			if (lib.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", true);
-				session.setAttribute("librarian", lib);
+				session.setAttribute("user", lib);
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			if (patron.getPassword().equals(password)) {
 				
 				session.setAttribute("isLibrarian", false);
-				session.setAttribute("patron", patron);
+				session.setAttribute("user", patron);
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
