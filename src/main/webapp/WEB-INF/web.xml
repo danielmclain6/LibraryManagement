@@ -49,6 +49,12 @@
 		<description></description>
 		<servlet-class>com.cognixia.jump.library.servlets.OneBook</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SingleBook</servlet-name>
+		<display-name>SingleBook</display-name>
+		<description></description>
+		<servlet-class>com.cognixia.jump.library.servlets.SingleBook</servlet-class>
+	</servlet>
 
 
 	<servlet-mapping>
@@ -74,6 +80,10 @@
 	<servlet-mapping>
 		<servlet-name>OneBook</servlet-name>
 		<url-pattern>/OneBook</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SingleBook</servlet-name>
+		<url-pattern>/SingleBook</url-pattern>
 	</servlet-mapping>
 
 
