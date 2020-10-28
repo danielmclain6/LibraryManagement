@@ -56,7 +56,7 @@ public class CheckoutBookServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String strId = request.getParameter(("user_id"));
-		if(strId.equals("")) {
+		if(strId == null) {
 			System.out.println("REDIRECT");
 			response.sendRedirect("/LibraryManager/login");
 			
@@ -70,7 +70,7 @@ public class CheckoutBookServlet extends HttpServlet {
 //		if (bool) {
 //		}
 		System.out.println("book " + b.getTitle() +"checkout by " + p.getUsername());
-		response.sendRedirect("/LibraryManager/book?isbn=" + b.getIsbn());
+		response.sendRedirect("/LibraryManager/books");
 	}
 
 	/**
