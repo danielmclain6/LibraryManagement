@@ -43,6 +43,12 @@
 		<description></description>
 		<servlet-class>com.cognixia.jump.library.servlets.LogoutServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>OneBook</servlet-name>
+		<display-name>OneBook</display-name>
+		<description></description>
+		<servlet-class>com.cognixia.jump.library.servlets.OneBook</servlet-class>
+	</servlet>
 
 
 	<servlet-mapping>
@@ -64,6 +70,10 @@
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OneBook</servlet-name>
+		<url-pattern>/OneBook</url-pattern>
 	</servlet-mapping>
 
 

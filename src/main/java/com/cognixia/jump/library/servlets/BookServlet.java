@@ -19,7 +19,7 @@ import com.cognixia.jump.library.dao.BookDao;
 import com.cognixia.jump.library.dao.BookDaoImp;
 import com.cognixia.jump.library.models.Book;
 
-@WebServlet("/")
+@WebServlet("/books")
 public class BookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -85,8 +85,8 @@ public class BookServlet extends HttpServlet {
 		System.out.println("called listBooks, allBooks = " + allBooks);
 
 		request.setAttribute("books", allBooks);
-		request.setAttribute("userId", 
-				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
+		request.setAttribute("user", 
+				session.getAttribute("user") == null ? null : session.getAttribute("user"));
 		request.setAttribute("isLibrarian", 
 				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
 		

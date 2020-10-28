@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	<div class="container">
 		<a class="navbar-brand" href="LibraryManager/">
-			<img alt="pumpkin" src="static/images/pumpkinWithHat.png" id="iconImage">
+			<img alt="pumpkin" src="static/images/pumpkinWithHat.png" style="height:50px;" id="iconImage">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
