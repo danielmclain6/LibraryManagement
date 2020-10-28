@@ -19,5 +19,9 @@ public interface PatronDAO
 	
 	public boolean updatePatron(Patron pat);
 	
+	public boolean unfreezePatron(Patron pat);
+	
+	public boolean freezePatron(Patron pat);
+	
 	public PatronHistory getPatronHistoryById(int patId);
 }

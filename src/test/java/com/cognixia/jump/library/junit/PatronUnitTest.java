@@ -1,6 +1,6 @@
 package com.cognixia.jump.library.junit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -93,6 +92,18 @@ public class PatronUnitTest {
 			e.printStackTrace();
 		}
 		assertTrue(patronDAO.deletePatron(patronEdit));
+	}
+	
+	@Test
+	public void unfreezePatronTest() {
+		Patron patron = patronDAO.getPatronById(2);
+		assertTrue(patronDAO.unfreezePatron(patron));
+	}
+	
+	@Test
+	public void freezePatronTest() {
+		Patron patron = patronDAO.getPatronById(2);
+		assertTrue(patronDAO.freezePatron(patron));
 	}
 	
 //	@After

@@ -177,6 +177,28 @@ public class PatronDAOImp implements PatronDAO
 		
 		return false;
 	}
+	
+	@Override
+	public boolean unfreezePatron(Patron pat) {
+		pat.setAccount_frozen(false);
+		
+		if(updatePatron(pat)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean freezePatron(Patron pat) {
+		pat.setAccount_frozen(true);
+		
+		if(updatePatron(pat)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	@Override
 	public Patron getPatronByUsername(String username)
@@ -242,6 +264,8 @@ public class PatronDAOImp implements PatronDAO
 		return null;
 		
 	}
+	
+	
 		
 //	public static void main(String[] args)
 //	{
