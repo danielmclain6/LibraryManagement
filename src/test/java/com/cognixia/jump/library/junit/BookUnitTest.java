@@ -61,5 +61,14 @@ public class BookUnitTest {
 		String isbn = "1234567893"; //should be unavailable/false
 		assertFalse(bookDAO.isBookAvailable(isbn));
 	}
+	
+	@Test
+	public void updateBookTest() {
+		Book book = bookDAO.getBookByIsbn("1234567893");
+		book.setTitle("Hamlet 2");
+		book.setDescr("new Description");
+		
+		assertTrue(bookDAO.updateBook(book));
+	}
 
 }
