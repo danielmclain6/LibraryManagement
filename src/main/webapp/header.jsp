@@ -14,14 +14,14 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
-    <link type="stylesheet" href="static/stylesheets/header.css">
-    <link type="stylesheet" href="static/stylesheets/navBar.css">
-    <link type="stylesheet" href="static/stylesheets/footer.css">
-    <link type="stylesheet" href="static/stylesheets/index.css">
-    <link type="stylesheet" href="static/stylesheets/book.css">
-    <link type="stylesheet" href="static/stylesheets/books.css">
-    <link type="stylesheet" href="static/stylesheets/patron.css">
-    <link type="stylesheet" href="static/stylesheets/patrons.css">
+    <link rel="stylesheet" href="static/stylesheets/header.css">
+    <link rel="stylesheet" href="static/stylesheets/navBar.css">
+    <link rel="stylesheet" href="static/stylesheets/footer.css">
+    <link rel="stylesheet" href="static/stylesheets/index.css">
+    <link rel="stylesheet" href="static/stylesheets/book.css">
+    <link rel="stylesheet" href="static/stylesheets/books.css">
+    <link rel="stylesheet" href="static/stylesheets/patron.css">
+    <link rel="stylesheet" href="static/stylesheets/patrons.css">
 
 </head>
 <body>
