@@ -46,7 +46,7 @@
 
         <c:if test="${!isLibrarian}">
             <c:if test="${book.rented}">
-                <a href="checkout_book?isnb=${book.isbn}" class="btn btn-outline-primary">Cannot checkout</a>
+                <a href="" class="btn btn-outline-primary">Cannot checkout</a>
             </c:if>
             <c:if test="${!book.rented}">
                 <a href="checkout_book?isnb=${book.isbn}" class="btn btn-outline-primary">Checkout</a>

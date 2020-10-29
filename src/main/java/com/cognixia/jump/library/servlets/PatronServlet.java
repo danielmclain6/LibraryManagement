@@ -51,17 +51,18 @@ public class PatronServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		int id = Integer.parseInt(request.getParameter("id"));
 		Patron p = patronDao.getPatronById(id);
 		List<BookCheckout> bookcheckouts = bookcheckoutDao.getBookHistory(p.getId());
 		request.setAttribute("patron", p);
-		request.setAttribute("bookCheckouts", bookcheckouts);
+		request.setAttribute("bookcheckouts", bookcheckouts);
 		request.setAttribute("userId", 
 				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
 		request.setAttribute("isLibrarian", 
-				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
+				session.getAttribute("isLibrarian") == null ? false : session.getAttribute("isLibrarian"));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("patron.jsp");
 		dispatcher.forward(request, response);

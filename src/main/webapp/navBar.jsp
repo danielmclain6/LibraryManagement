@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	<div class="container">
-		<a class="navbar-brand" href="LibraryManager/">
+		<a class="navbar-brand" href="/LibraryManager">
 			<img alt="pumpkin" src="static/images/pumpkinWithHat.png" style="height:50px;" id="iconImage">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -14,12 +14,14 @@
 					<li class="nav-item nav-link">
 						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
 					</li>
+					<c:if test="${isLibrarian}">
 					<li class="nav-item nav-link">
 						<a class="btn btn-outline-primary" href="/LibraryManager/addBook">Add</a>
 					</li>
 					<li class="nav-item nav-link">
-						<a class="btn btn-outline-primary" href="/LibraryManager">Patrons</a>
+						<a class="btn btn-outline-primary" href="/LibraryManager/patrons">Patrons</a>
 					</li>
+					</c:if>
 				</ul>
 				<div class="navbar-nav">
 					<c:if test="${user != null}">

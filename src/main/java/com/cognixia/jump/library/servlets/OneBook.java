@@ -55,7 +55,7 @@ public class OneBook extends HttpServlet {
 		request.setAttribute("user", 
 				session.getAttribute("user") == null ? null : session.getAttribute("user"));
 		request.setAttribute("isLibrarian", 
-				session.getAttribute("isLibrarian") == null ? null : session.getAttribute("isLibrarian"));
+				session.getAttribute("isLibrarian") == null ? false : session.getAttribute("isLibrarian"));
 		
 		// render template
 		RequestDispatcher dispatcher = request.getRequestDispatcher("book.jsp");

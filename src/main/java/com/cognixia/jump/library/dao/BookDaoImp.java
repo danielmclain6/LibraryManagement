@@ -227,7 +227,6 @@ public class BookDaoImp implements BookDao {
 			// TODO: handle exception
 		}
 		return rentedBooks;
-
 	}
 
 }
