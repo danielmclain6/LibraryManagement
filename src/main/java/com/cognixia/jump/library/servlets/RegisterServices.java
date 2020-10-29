@@ -6,6 +6,7 @@ import java.lang.module.ResolutionException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +30,13 @@ public class RegisterServices extends HttpServlet {
 	private static final long serialVersionUID = -1030946973739033378L;
 	private PatronDAO patronDao;
 	private LibrarianDAO librarianDao;
-	
+	private String errorMessage;
 
 	@Override
 	public void init() {
 		librarianDao = new LibrarianDAOImp();
 		patronDao = new PatronDAOImp();
+		errorMessage = "";
 	}
 
 	@Override
@@ -66,25 +68,42 @@ public class RegisterServices extends HttpServlet {
 		if(userType.equals("patron")) {
 			Patron p = new Patron(0, first_name, last_name, username, password, true);
 			boolean b = patronDao.addPatron(p);
-			if(b) {
+			if(b) 
+			{
 				System.out.println("patron add!");
+				session.setAttribute("user", p);
+				session.setAttribute("isLibrarian", false);
+				
+				response.sendRedirect("/LibraryManager/books");
 			}
-			// put them into session
-			session.setAttribute("user", p);
-			session.setAttribute("isLibrarian", false);
+			else
+			{
+				errorMessage = "Username already in use.";
+				request.setAttribute("errorMessage", errorMessage);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+				dispatcher.forward(request, response);
+			}
 			
 		} else if(userType.equals("librarian")) {
 			Librarian l = new Librarian(0, username, password);
 			boolean b = librarianDao.addLibrarian(l);
 			if(b) {
 				System.out.println("patron add!");
+				session.setAttribute("user", l);
+				session.setAttribute("isLibrarian", true);
+				
+				response.sendRedirect("/LibraryManager/books");
 			}
-			// put them into session
-			session.setAttribute("user", l);
-			session.setAttribute("isLibrarian", true);
+			else
+			{
+				errorMessage = "Username already in use.";
+				request.setAttribute("errorMessage", errorMessage);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
-		// send redirect
-		response.sendRedirect("/LibraryManager/books");
 		
 	}
 }
