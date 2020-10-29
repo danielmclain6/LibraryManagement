@@ -87,7 +87,7 @@ public class OneBook extends HttpServlet {
 			
 		}
 		
-		response.sendRedirect("/LibraryManager/book?isbn=" + book.getIsbn());
+		response.sendRedirect("/LibraryManager/book?isbn=" + isbn);
 	}
 
 }
