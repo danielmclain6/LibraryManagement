@@ -2,15 +2,15 @@
 <%@ include file="header.jsp"%>
 
 <div id="book_card" class="container-fluid">
-	
+
 	<div class="container">
 
 		<div id="article">
 			<p id="isbn" class="text-light">
-				isbn =
+				ISBN =
 				<c:out value="${book.isbn}"></c:out>
 			</p>
-			<article>
+			<article class="shadow">
 
 				<h2>
 					<c:out value="${book.title}"></c:out>
@@ -32,7 +32,7 @@
 					</c:if>
 					<c:if test="${!book.rented}">
 						<a href="checkout_book?book_isbn=${book.isbn}&user_id=${user.id}">
-							<button class="btn btn-info">Check Me Out</button>
+							<button class="btn btn-info shadow">Check Me Out</button>
 						</a>
 					</c:if>
 				</div>

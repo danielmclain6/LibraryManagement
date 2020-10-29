@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +17,11 @@ import com.cognixia.jump.library.dao.BookDaoImp;
 import com.cognixia.jump.library.models.Book;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class EditBook
  */
-@WebServlet("/book")
-public class OneBook extends HttpServlet {
+@WebServlet("/edit_book")
+public class EditBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	private BookDao bookDao;
 
 	@Override
@@ -47,47 +45,29 @@ public class OneBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("------in the onebookServelt.java file");
-		HttpSession session = request.getSession();
-		Book book = bookDao.getBookByIsbn(request.getParameter("isbn"));
-		
-		// models onto jsps
-		request.setAttribute("book", book);
-		request.setAttribute("user", 
-				session.getAttribute("user") == null ? null : session.getAttribute("user"));
-		request.setAttribute("isLibrarian", 
-				session.getAttribute("isLibrarian") == null ? false : session.getAttribute("isLibrarian"));
-		
-		// render template
-		RequestDispatcher dispatcher = request.getRequestDispatcher("book.jsp");
-		dispatcher.forward(request, response);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		Boolean isLib = (Boolean)session.getAttribute("isLibrarian");
 		if(isLib == null || false) {
 			response.sendRedirect("/LibraryManager/books");
 		}
-		
-		String isbn = request.getParameter("isnb");
+		String isbn = request.getParameter("isbn");
 		String title = request.getParameter("title");
 		String descr = request.getParameter("descr");
-		boolean rented = false;
-		Date added_to_library = new Date();
-		
-		Book book = new Book(isbn, title, descr, rented, added_to_library);
-		try {
-			bookDao.addBook(book);
-		} catch (Exception e) {
-			// error handling here if isbn exists
-			
-			
-		}
+		Book book = bookDao.getBookByIsbn(isbn);
+		book.setTitle(title);
+		book.setDescr(descr);
+		bookDao.updateBook(book);
 		
 		response.sendRedirect("/LibraryManager/book?isbn=" + isbn);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

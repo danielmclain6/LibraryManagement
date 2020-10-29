@@ -66,6 +66,26 @@
 					account_frozen =
 					<c:out value="${patron.account_frozen}"></c:out>
 				</p>
+				<a href="/LibraryManager/patron?id=${patron.id}" class="btn btn-outline-primary">See Patron History</a>
+				
+				
+				<c:if test="${patron.account_frozen}">
+					<a href="/LibraryManager/freeze_patron?id=${patron.id}" class="btn btn-outline-success">
+						UnFreeze</a>
+				</c:if>
+				<c:if test="${!patron.account_frozen}">
+					<a href="/LibraryManager/freeze_patron?id=${patron.id}" class="btn btn-outline-danger"> Freeze </a>
+				</c:if>
+				
+				<c:if test="${books == null}">
+					user not currently checkout out book
+				</c:if>
+				<c:if test="${books != null}">
+					<c:forEach var="book" items="${ books }">
+						<a href="/LibraryManager/book?isbn=${book.isbn}" alt="${book.title}">Book <c:out value="${ book.title }" ></c:out></a>
+					</c:forEach>
+				</c:if>
+				
 			</c:if>
 
 

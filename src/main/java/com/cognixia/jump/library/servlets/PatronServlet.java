@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.BookCheckoutDao;
 import com.cognixia.jump.library.dao.BookCheckoutDaoImp;
+import com.cognixia.jump.library.dao.BookDao;
+import com.cognixia.jump.library.dao.BookDaoImp;
 import com.cognixia.jump.library.dao.PatronDAO;
 import com.cognixia.jump.library.dao.PatronDAOImp;
 import com.cognixia.jump.library.models.Patron;
@@ -29,11 +31,13 @@ import com.cognixia.jump.library.models.BookCheckout;
 public class PatronServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PatronDAO patronDao;
+	private BookDao bookDao;
 	private BookCheckoutDao bookcheckoutDao;
 	@Override
 	public void init() {
 		patronDao = new PatronDAOImp();
 		bookcheckoutDao = new BookCheckoutDaoImp();
+		bookDao = new BookDaoImp();
 	}
 
 	@Override
@@ -57,6 +61,11 @@ public class PatronServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Patron p = patronDao.getPatronById(id);
 		List<BookCheckout> bookcheckouts = bookcheckoutDao.getBookHistory(p.getId());
+		
+		if(p != null && bookcheckouts.size() != 0) {
+			
+		}
+		
 		request.setAttribute("patron", p);
 		request.setAttribute("bookcheckouts", bookcheckouts);
 		request.setAttribute("userId", 

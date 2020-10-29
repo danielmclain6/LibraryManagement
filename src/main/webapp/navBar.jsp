@@ -50,7 +50,7 @@
     	  <div class="modal-body">
        		<div class="form-group">
          		<label for="isbnInput">ISBN</label>
-         		<input type="text" class="form-control" name="isbn" id="isbnInput" placeholder="isbn">
+         		<input type="text" class="form-control" name="isbn" id="isbnInput" placeholder="isbn" pattern=".{10,10}" title="ISBN must be 10 characters">
       		</div>
        		<div class="form-group">
          		<label for="titleInput">Title</label>
