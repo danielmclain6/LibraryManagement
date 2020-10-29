@@ -67,6 +67,12 @@
 		<description></description>
 		<servlet-class>com.cognixia.jump.library.servlets.RetrunBookServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AccountFreezer</servlet-name>
+		<display-name>AccountFreezer</display-name>
+		<description></description>
+		<servlet-class>com.cognixia.jump.library.servlets.AccountFreezer</servlet-class>
+	</servlet>
 
 
 	<servlet-mapping>
@@ -104,6 +110,10 @@
 	<servlet-mapping>
 		<servlet-name>RetrunBookServlet</servlet-name>
 		<url-pattern>/RetrunBookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AccountFreezer</servlet-name>
+		<url-pattern>/AccountFreezer</url-pattern>
 	</servlet-mapping>
 
 
