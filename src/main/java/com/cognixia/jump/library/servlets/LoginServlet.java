@@ -16,6 +16,7 @@ import com.cognixia.jump.library.dao.PatronDAO;
 import com.cognixia.jump.library.dao.PatronDAOImp;
 import com.cognixia.jump.library.models.Librarian;
 import com.cognixia.jump.library.models.Patron;
+import com.cognixia.jump.library.utility.Utility;
 
 /**
  * Servlet implementation class Login
@@ -26,10 +27,12 @@ public class LoginServlet extends HttpServlet {
 	
 	private LibrarianDAO librarianDAO;
 	private PatronDAO patronDAO;
+	private String errorMessage;
 	
 	public void init() {
 		librarianDAO = new LibrarianDAOImp();
 		patronDAO = new PatronDAOImp();
+		errorMessage = "";
 	}
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,13 +46,14 @@ public class LoginServlet extends HttpServlet {
 		// logic for login
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String userType = request.getParameter("user_type");
 		
 		HttpSession session = request.getSession();
 		
-		if (userType.equals("librarian")) {
-//			Librarian lib = librarianDAO.getLibrarianByUserName(username);
-			Librarian lib = librarianDAO.getLibrarianById(1);
+		Object user = Utility.getUserByUsername(username);
+		
+		if(user instanceof Librarian)
+		{
+			Librarian lib = librarianDAO.getLibrarianByUsername(username);
 			
 			if (lib.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", true);
@@ -57,22 +61,33 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
+				errorMessage = "Invalid password";
+				request.setAttribute("errorMessage", errorMessage);
 			}
 		}
-		
-		if (userType.equals("patron")) {
-//			Patron patron = patronDAO.getPatronByUsername(username);
-			Patron patron = patronDAO.getPatronById(1);
+		else if(user instanceof Patron)
+		{
+			Patron patron = patronDAO.getPatronByUsername(username);
 			
 			if (patron.getPassword().equals(password)) {
-				
 				session.setAttribute("isLibrarian", false);
 				session.setAttribute("user", patron);
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
+				errorMessage = "Invalid password";
+				request.setAttribute("errorMessage", errorMessage);
 			}
 		}
+		else
+		{
+			System.out.println("This user does not exist");
+			errorMessage = "User does not exist";
+			request.setAttribute("errorMessage", errorMessage);
+		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
