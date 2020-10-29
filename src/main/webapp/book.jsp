@@ -6,7 +6,7 @@
 	<div class="container">
 
 		<div id="article">
-			<p id="isbn" class="text-color-white">
+			<p id="isbn" class="text-light">
 				isbn =
 				<c:out value="${book.isbn}"></c:out>
 			</p>
