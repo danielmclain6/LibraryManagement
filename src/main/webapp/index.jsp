@@ -7,7 +7,9 @@
 <br>
 <br>
 <br>
-<a class="btn" href="login">Login</a>
+<c:if test="${user == null}">
+	<a class="btn" href="login">Login</a>
+</c:if>
 <a class="btn" href="books">Books</a>
 
 </div>

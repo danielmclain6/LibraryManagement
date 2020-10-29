@@ -14,7 +14,7 @@
 					<li class="nav-item nav-link">
 						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
 					</li>
-					<c:if test="${isLibrarian}">
+					<c:if test="${isLibrarian and user != null}">
 					<li class="nav-item nav-link">
 						<a class="btn btn-outline-primary" data-toggle="modal" data-target="#add-modal">Add</a>
 					</li>
@@ -46,7 +46,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="books">
+      <form method="post" action="books?action=add">
     	  <div class="modal-body">
        		<div class="form-group">
          		<label for="isbnInput">ISBN</label>
