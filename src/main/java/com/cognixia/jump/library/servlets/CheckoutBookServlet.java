@@ -56,23 +56,29 @@ public class CheckoutBookServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Boolean o = Boolean.getBoolean(request.getParameter(("isLibrarian")));
-		if(o == null || o == true) {
-			System.out.println("REDIRECT");
-			response.sendRedirect("/LibraryManager/login");
-		} else {
-			System.out.println(session.getAttribute("isLibrarian") + " <- session-isLibrarian");
-			System.out.println(session.getAttribute("user") + " <- session-user");
-			System.out.println(session.getAttribute("userId") + " <- session-userId ");
-//			int id = Integer.parseInt();
+//		if(o == null) {
+//			System.out.println("REDIRECT");
+//			response.sendRedirect("/LibraryManager/login");
+//		} 
+
+		if (o == false && session.getAttribute("user") != null) {
+//			System.out.println(session.getAttribute("isLibrarian") + " <- session-isLibrarian");
+//			System.out.println(session.getAttribute("user") + " <- session-user");
+//			System.out.println(session.getAttribute("userId") + " <- session-userId ");
+			int id = Integer.valueOf(session.getAttribute("user_id").toString());
+//			System.out.println(id);
 			// check it anyone is in session
-//			Patron p = patronDao.getPatronById(id);
-//			Book b = bookDao.getBookByIsbn(request.getParameter("isbn"));
+			Patron p = patronDao.getPatronById(id);
+			Book b = bookDao.getBookByIsbn(request.getParameter("isbn"));
 			
-//		boolean bool = bookcheckoutDao.checkoutBook(p, b);
-//		if (bool) {
-//		}
-//			System.out.println("book " + b.getTitle() +"checkout by " + p.getUsername());
+//			System.out.println("book " + b);
+//			System.out.println("isbn " + b.getIsbn());
+			bookcheckoutDao.checkoutBook(p, b);
+//			boolean bool = bookcheckoutDao.checkoutBook(p, b);
+//			if (bool) {
+//				System.out.println("book " + b.getTitle() + "checkout by " + p.getUsername());
 			response.sendRedirect("/LibraryManager/books");
+			
 		}
 	}
 

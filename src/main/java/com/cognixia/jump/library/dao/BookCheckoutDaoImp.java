@@ -55,7 +55,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 		try (PreparedStatement state = conn.prepareStatement(CHECKOUT_BOOK);
 				PreparedStatement bookState = conn.prepareStatement("update book set rented = 1 where isbn = ?")) {
-
+			
 			state.setInt(1, p.getId());
 			state.setString(2, b.getIsbn());
 			state.setString(3, today);

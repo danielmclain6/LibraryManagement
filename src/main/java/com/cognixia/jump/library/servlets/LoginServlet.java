@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
 			if (lib.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", true);
 				session.setAttribute("user", lib);
+				session.setAttribute("user_id", lib.getId());
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");
@@ -78,6 +79,7 @@ public class LoginServlet extends HttpServlet {
 			if (patron.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", false);
 				session.setAttribute("user", patron);
+				session.setAttribute("user_id", patron.getId());
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");

@@ -36,10 +36,10 @@
         </p>
         <c:if test="${isLibrarian}">
             <c:if test="${book.rented}">
-                <a href="return_book?isnb=${book.isbn}" class="btn btn-outline-primary">Book Returned</a>
+                <a href="return_book?isbn=${book.isbn}" class="btn btn-outline-primary">Mark as Returned</a>
             </c:if>
             <c:if test="${!book.rented}">
-                <a href="edit_book?isnb=${book.isbn}" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit</a>
+                <a href="edit_book?isbn=${book.isbn}" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit</a>
                 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
@@ -82,7 +82,7 @@
                 <a href="" class="btn btn-outline-primary">Cannot checkout</a>
             </c:if>
             <c:if test="${!book.rented}">
-                <a href="checkout_book?isnb=${book.isbn}" class="btn btn-outline-primary">Checkout</a>
+                <a href="checkout_book?isbn=${book.isbn}" class="btn btn-outline-primary">Checkout</a>
             </c:if>
         </c:if>
         <hr>

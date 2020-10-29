@@ -51,7 +51,7 @@ public class EditBook extends HttpServlet {
 		if(isLib == null || false) {
 			response.sendRedirect("/LibraryManager/books");
 		}
-		String isbn = request.getParameter("isnb");
+		String isbn = request.getParameter("isbn");
 		String title = request.getParameter("title");
 		String descr = request.getParameter("descr");
 		Book book = bookDao.getBookByIsbn(isbn);
