@@ -80,6 +80,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("isLibrarian", false);
 				session.setAttribute("user", patron);
 				session.setAttribute("user_id", patron.getId());
+				session.setAttribute("isFrozen", patron.isAccount_frozen());
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");

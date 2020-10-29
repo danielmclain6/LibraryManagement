@@ -79,11 +79,12 @@
 
         <c:if test="${!isLibrarian}">
             <c:if test="${book.rented}">
-                <a href="" class="btn btn-outline-primary">Cannot checkout</a>
+                <a href="" class="btn btn-outline-primary">Book Unavailable</a>
             </c:if>
-            <c:if test="${!book.rented}">
+            <c:if test="${!book.rented && !isFrozen}">
                 <a href="checkout_book?isbn=${book.isbn}" class="btn btn-outline-primary">Checkout</a>
             </c:if>
+            <c:if test="${isFrozen}"><p>Checkout not available, your account is pending approval</p></c:if>
         </c:if>
         <hr>
     </c:forEach>

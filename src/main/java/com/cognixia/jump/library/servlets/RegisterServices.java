@@ -73,6 +73,7 @@ public class RegisterServices extends HttpServlet {
 				System.out.println("patron add!");
 				session.setAttribute("user", p);
 				session.setAttribute("user_id", p.getId());
+				session.setAttribute("isFrozen", p.isAccount_frozen());
 				session.setAttribute("isLibrarian", false);
 				
 				response.sendRedirect("/LibraryManager/books");
