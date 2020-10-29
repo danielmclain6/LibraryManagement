@@ -202,26 +202,25 @@ public class PatronDAOImp implements PatronDAO {
 	@Override
 	public PatronHistory getPatronHistoryById(int patId) {
 		try (PreparedStatement pstmt = conn.prepareStatement(
-				"select * from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where patron.patron_id = ?")) {
-			PatronHistory ph;
+				"select * from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where book_checkout.patron_id = ?")) {
+			PatronHistory ph = null;
 
 			pstmt.setInt(1, patId);
 
 			ResultSet rs = pstmt.executeQuery();
 
-			rs.next();
-			ph = new PatronHistory(rs.getInt("patron_id"), rs.getString("first_name"), rs.getString("last_name"),
-					rs.getString("username"), rs.getString("password"), rs.getBoolean("account_frozen"));
-			BookCheckoutWithBook bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
-					rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
-			ph.addHistory(bc);
-
-			while (rs.next()) {
-				bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
+			if(rs.next()) {
+				ph = new PatronHistory(rs.getInt("patron_id"), rs.getString("first_name"), rs.getString("last_name"),
+						rs.getString("username"), rs.getString("password"), rs.getBoolean("account_frozen"));
+				BookCheckoutWithBook bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
 						rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
 				ph.addHistory(bc);
+				while (rs.next()) {
+					bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
+							rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
+					ph.addHistory(bc);
+				}
 			}
-
 			return ph;
 
 		} catch (SQLException e) {
