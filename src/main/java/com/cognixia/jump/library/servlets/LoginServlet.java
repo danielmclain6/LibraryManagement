@@ -49,11 +49,15 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
+		System.out.println(username + " " + password);
+		
 		Object user = Utility.getUserByUsername(username);
 		
 		if(user instanceof Librarian)
 		{
 			Librarian lib = librarianDAO.getLibrarianByUsername(username);
+			
+			System.out.println("hello");
 			
 			if (lib.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", true);
@@ -63,6 +67,8 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("Wrong username or password or account does not exist");
 				errorMessage = "Invalid password";
 				request.setAttribute("errorMessage", errorMessage);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 		else if(user instanceof Patron)
@@ -77,6 +83,8 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("Wrong username or password or account does not exist");
 				errorMessage = "Invalid password";
 				request.setAttribute("errorMessage", errorMessage);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+				dispatcher.forward(request, response);
 			}
 		}
 		else
@@ -84,10 +92,9 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("This user does not exist");
 			errorMessage = "User does not exist";
 			request.setAttribute("errorMessage", errorMessage);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
+			dispatcher.forward(request, response);
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("loginReg.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }
