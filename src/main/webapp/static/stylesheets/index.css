@@ -1,0 +1,39 @@
+body {
+    background-color:white;
+}
+
+.login-button {
+    background: url("../images/fullMoon.jpg") 100%;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  width:400px;
+  height:400px;
+  line-height:20px;
+  text-align: center;
+  
+ 
+}
+
+.book-button {
+    background: url("../images/hallwayOfBooks.jpg") ;
+   border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  width:400px;
+  height:400px;
+  line-height:20px;
+  text-align: center;
+}
