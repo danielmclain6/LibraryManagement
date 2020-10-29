@@ -2,6 +2,7 @@ package com.cognixia.jump.library.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,8 +65,29 @@ public class OneBook extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		HttpSession session = request.getSession();
+		Boolean isLib = (Boolean)session.getAttribute("isLibrarian");
+		if(isLib == null || false) {
+			response.sendRedirect("/LibraryManager/books");
+		}
+		
+		String isbn = request.getParameter("isnb");
+		String title = request.getParameter("title");
+		String descr = request.getParameter("descr");
+		boolean rented = false;
+		Date added_to_library = new Date();
+		
+		Book book = new Book(isbn, title, descr, rented, added_to_library);
+		try {
+			bookDao.addBook(book);
+		} catch (Exception e) {
+			// error handling here if isbn exists
+			
+			
+		}
+		
+		response.sendRedirect("/LibraryManager/book?isbn=" + book.getIsbn());
 	}
 
 }
