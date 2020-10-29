@@ -231,6 +231,25 @@ public class PatronDAOImp implements PatronDAO {
 		return null;
 
 	}
+	
+	@Override
+	public int getPatronBooksCheckedout(int patId) {
+		try (PreparedStatement pstmt = conn.prepareStatement(
+				"select count(*) as books_rented from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where patron.patron_id = ? and book.rented = 1")) {
+		
+			pstmt.setInt(1, patId);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			return rs.getInt("books_rented");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+
+	}
 
 	public List<Patron> getAllAvailablePatrons() {
 		List<Patron> patrons = new ArrayList<>();

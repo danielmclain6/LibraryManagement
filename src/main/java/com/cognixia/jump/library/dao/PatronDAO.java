@@ -23,6 +23,8 @@ public interface PatronDAO {
 	public boolean freezePatron(Patron pat);
 
 	public PatronHistory getPatronHistoryById(int patId);
+	
+	public int getPatronBooksCheckedout(int patId);
 
 	public List<Patron> getAllAvailablePatrons();
 
