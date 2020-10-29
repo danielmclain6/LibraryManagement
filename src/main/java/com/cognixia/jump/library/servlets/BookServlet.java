@@ -46,8 +46,8 @@ public class BookServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		doGet(request, response);
+		addNewBook(request, response);
+		System.out.println("success");
 	}
 
 //	doPost - add book to database or edit book (refer to ProductServlet in CrudProject)
@@ -153,7 +153,7 @@ public class BookServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String isbn = request.getParameter("isbn");
 		String title = request.getParameter("title");
-		String descr = request.getParameter("description");
+		String descr = request.getParameter("descr");
 
 		Book book = new Book(isbn, title, descr, false, null);
 
@@ -161,7 +161,7 @@ public class BookServlet extends HttpServlet {
 			System.out.println("Adding book: " + book);
 		}
 
-		response.sendRedirect("book?id=newBookID");
+		response.sendRedirect("book?isbn=" + isbn);
 	}
 
 	private void deleteBook(HttpServletRequest request, HttpServletResponse response)
