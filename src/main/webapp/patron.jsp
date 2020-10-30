@@ -1,8 +1,7 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div class="container">
-	<h1>Patrons page</h1>
+<div class="container pt-5">
 	<div class="col-5 m-1 border rounded">
 		<h1>Patron page</h1>
 		<p>
