@@ -94,8 +94,8 @@ public class BookServlet extends HttpServlet {
 			allBooks = bookDao.getAllAvailableBooks();
 		}
 
-		System.out.println(action + " < - action");
-		System.out.println("called listBooks, allBooks = " + allBooks);
+//		System.out.println(action + " < - action");
+//		System.out.println("called listBooks, allBooks = " + allBooks);
 
 		request.setAttribute("books", allBooks);
 		request.setAttribute("user", 
@@ -104,7 +104,7 @@ public class BookServlet extends HttpServlet {
 				session.getAttribute("isLibrarian") == null ? false : session.getAttribute("isLibrarian"));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("books.jsp");
-		System.out.println("sent");
+//		System.out.println("sent");
 		dispatcher.forward(request, response);
 		
 
@@ -153,12 +153,12 @@ public class BookServlet extends HttpServlet {
 
 		String isbn = request.getParameter("isbn");
 		Book book = bookDao.getBookByIsbn(isbn);
-		System.out.println("called getBookbyIsbn, book = " + book);
+//		System.out.println("called getBookbyIsbn, book = " + book);
 
 		request.setAttribute("book", book);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("book.jsp");
-		System.out.println("sent");
+//		System.out.println("sent");
 		dispatcher.forward(request, response);
 	}
 
@@ -171,7 +171,7 @@ public class BookServlet extends HttpServlet {
 		Book book = new Book(isbn, title, descr, false, null);
 
 		if (bookDao.addBook(book)) {
-			System.out.println("Adding book: " + book);
+//			System.out.println("Adding book: " + book);
 		}
 
 		response.sendRedirect("book?isbn=" + isbn);
@@ -183,7 +183,7 @@ public class BookServlet extends HttpServlet {
 		String isbn = request.getParameter("isbn");
 
 		if (bookDao.deleteBook(isbn)) {
-			System.out.println("Deleted product with isbn = " + isbn);
+//			System.out.println("Deleted product with isbn = " + isbn);
 		}
 
 		response.sendRedirect("list");
@@ -199,7 +199,7 @@ public class BookServlet extends HttpServlet {
 		Book book = new Book(isbn, title, descr, false, null);
 
 		if (bookDao.updateBook(book)) {
-			System.out.println("Updating book: " + book);
+//			System.out.println("Updating book: " + book);
 		}
 
 		response.sendRedirect("book?isbn=" + isbn);
@@ -224,12 +224,12 @@ public class BookServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		List<Book> allRentedBooks = bookDao.getAllRentedBooks();
-		System.out.println("called listBooks, allAvaiableBooks = " + allRentedBooks);
+//		System.out.println("called listBooks, allAvaiableBooks = " + allRentedBooks);
 
 		request.setAttribute("allRentedBooks", allRentedBooks);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("books.jsp");
-		System.out.println("sent");
+//		System.out.println("sent");
 		dispatcher.forward(request, response);
 	}
 
@@ -237,12 +237,12 @@ public class BookServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		List<Book> allAvailableBooks = bookDao.getAllAvailableBooks();
-		System.out.println("called listBooks, allAvaiableBooks = " + allAvailableBooks);
+//		System.out.println("called listBooks, allAvaiableBooks = " + allAvailableBooks);
 
 		request.setAttribute("allAvailableBooks", allAvailableBooks);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("books.jsp");
-		System.out.println("sent");
+//		System.out.println("sent");
 		dispatcher.forward(request, response);
 	}
 }

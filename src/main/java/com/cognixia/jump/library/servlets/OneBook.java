@@ -47,7 +47,7 @@ public class OneBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("------in the onebookServelt.java file");
+//		System.out.println("------in the onebookServelt.java file");
 		HttpSession session = request.getSession();
 		Book book = bookDao.getBookByIsbn(request.getParameter("isbn"));
 		
