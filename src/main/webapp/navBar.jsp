@@ -25,11 +25,11 @@
 				<c:if test="${isLibrarian and user != null}">
 
 					<li class="nav-item nav-link"><a
-							class="btn btn-outline-primary" href="/LibraryManager/patrons">Patrons</a>
+							class="btn btn-secondary" href="/LibraryManager/patrons">Patrons</a>
 					</li>
 
 					<li class="nav-item nav-link"><a
-							class="btn btn-outline-primary" data-toggle="modal"
+							class="btn btn-secondary" data-toggle="modal"
 							data-target="#add-modal">Add Book</a></li>
 				</c:if>
 			</ul>
