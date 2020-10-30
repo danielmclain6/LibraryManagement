@@ -43,7 +43,7 @@
 	<hr />
 	<div class="col-5 m-1 border rounded">
 		<c:if test="${book == null}">
-			no book checked out
+			<h4> No checkouts currently </h4>
 		</c:if>
 		<c:if test="${ book != null }">
 			<p>
@@ -74,10 +74,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">Checkout Date</th>
-					<th scope="col">dueDate</th>
-					<th scope="col">returned</th>
-					<th scope="col">book isbn</th>
+					<th class="text-white" scope="col">ISBN</th>
+					<th class="text-white" scope="col">Checkout Date</th>
+					<th class="text-white" scope="col">Due Date</th>
+					<th class="text-white" scope="col">Returned Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -87,16 +87,16 @@
 				<c:if test="${ bookcheckouts.size() != 0 }">
 					<c:forEach var="history" items="${bookcheckouts}">
 						<tr>
-							<th scope="row">
+							<th scope="row" class="text-white">
 								<c:out value="${ history.isbn }"></c:out>
 							</th>
-							<td>
-								<c:out value="${history.due_date}"></c:out>
-							</td>
-							<td>
+							<td class="text-white">
 								<c:out value="${history.checkedout}"></c:out>
 							</td>
-							<td>
+							<td class="text-white">
+								<c:out value="${history.due_date}"></c:out>
+							</td>
+							<td class="text-white">
 								<c:out value="${history.returned}"></c:out>
 							</td>
 						</tr>

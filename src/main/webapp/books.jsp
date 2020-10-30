@@ -53,7 +53,7 @@
 				</p> --%>
 				<c:if test="${isLibrarian}">
 					<c:if test="${book.rented}">
-						<a href="return_book?isnb=${book.isbn}"
+						<a href="return_book?isbn=${book.isbn}"
 							class="btn btn-outline-primary">Mark as Returned</a>
 						
 					</c:if>

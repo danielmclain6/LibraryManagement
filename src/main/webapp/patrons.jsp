@@ -133,10 +133,10 @@
 							<c:out value="${patron.username }"></c:out> Does not have any checked out books
 						</c:if>
 						<c:if test="${ books != null }">
-							<p>
-								Books in <strong><c:out value="${patron.username }"></c:out></strong>
-								has checkedout currently
-							</p>
+							<h4>
+								<strong><c:out value="${patron.first_name }"></c:out>'s</strong> Checkout History 
+								
+							</h4>
 							<table class="table">
 								<thead class="thead-dark">
 									<tr>
