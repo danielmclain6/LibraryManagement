@@ -81,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", patron);
 				session.setAttribute("user_id", patron.getId());
 				session.setAttribute("isFrozen", patron.isAccount_frozen());
+				session.setAttribute("signinMsg", false);
 				response.sendRedirect("/LibraryManager/books");
 			} else {
 				System.out.println("Wrong username or password or account does not exist");

@@ -3,6 +3,7 @@ package com.cognixia.jump.library.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -79,6 +80,9 @@ public class CheckoutBookServlet extends HttpServlet {
 //				System.out.println("book " + b.getTitle() + "checkout by " + p.getUsername());
 			response.sendRedirect("/LibraryManager/books");
 			
+		} else {
+			session.setAttribute("signinMsg", true);
+			response.sendRedirect("/LibraryManager/login");
 		}
 	}
 

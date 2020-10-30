@@ -17,6 +17,9 @@
     <div class="row">
 	    <div class="col border rounded m-2">
 	        <h1>Login</h1>
+	        <c:if test="${signinMsg}">
+	        	<h3 class="text-danger">Please sign in to checkout a book</h3>
+	        </c:if>
 	        <form method="post" action="">
 	            <div class="form-group">
 	              <label for="exampleInputEmail1">Email address</label>
