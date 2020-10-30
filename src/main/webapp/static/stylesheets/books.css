@@ -1,0 +1,19 @@
+.books_card {
+	border: 2px solid #ED975A;
+	padding: 20px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.books_card img {
+	width: 50%;
+}
+
+.btn-checkout {
+	margin-top: 5px;
+	border-radius: 5px;
+	background-color: #FFC43D;
+	padding: 1vh;
+	color: black; 
+}
+

@@ -68,7 +68,7 @@ public class PatronsServlet extends HttpServlet {
 			patrons = patronDao.getAllFrozenPatrons();
 		}
 
-		System.out.println(action + " < - action");
+//		System.out.println(action + " < - action");
 //		System.out.println("called listPatrons, allPatrons = " + patrons);
 
 		Patron patron = null;

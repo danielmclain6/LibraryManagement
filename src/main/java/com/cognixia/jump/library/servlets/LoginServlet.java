@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 		{
 			Librarian lib = librarianDAO.getLibrarianByUsername(username);
 			
-			System.out.println("hello");
+//			System.out.println("hello");
 			
 			if (lib.getPassword().equals(password)) {
 				session.setAttribute("isLibrarian", true);

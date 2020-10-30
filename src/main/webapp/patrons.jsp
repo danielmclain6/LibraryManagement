@@ -1,7 +1,7 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div class="container">
+<div class="container pt-5">
 	<div class="row justify-content-around">
 		<div class="col-5 border rounded m-1 frosty-bg" id="patrons-table">
 

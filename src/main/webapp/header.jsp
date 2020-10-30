@@ -22,6 +22,24 @@
     <link rel="stylesheet" href="static/stylesheets/books.css">
     <link rel="stylesheet" href="static/stylesheets/patron.css">
     <link rel="stylesheet" href="static/stylesheets/patrons.css">
+    <link rel="stylesheet" href="static/stylesheets/spookySpookyLibColors.css">
+    
+    <style type="text/css">
+    	* {
+    		box-sizing: border-box;
+    	}
+    	body {
+    		background-color: #0E1122;
+    	}
+    	
+    	h1, h4 {
+    		color: white;
+    	}
+    	
+    	p {
+    		color: white;
+    	}
+    </style>
 
 </head>
 <body>

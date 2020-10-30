@@ -15,7 +15,7 @@
 				<h2>
 					<c:out value="${book.title}"></c:out>
 				</h2>
-				<p id="book_descr">
+				<p class="text-dark" id="book_descr">
 					<c:out value="${book.descr}"></c:out>
 				</p>
 
@@ -23,7 +23,7 @@
 					<%-- <p>
 				<c:out value="${book.rented}"></c:out>
 			</p> --%>
-					<p>
+					<p class="text-dark">
 						added to library: <br>
 						<c:out value="${book.added_to_library}"></c:out>
 					</p>

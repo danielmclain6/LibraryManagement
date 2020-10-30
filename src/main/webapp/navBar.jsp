@@ -1,52 +1,56 @@
 
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="ssp-caribean-green navbar navbar-expand-sm ">
 	<div class="container">
 		<a class="navbar-brand" href="/LibraryManager">
-			<img alt="pumpkin" src="static/images/pumpkinWithHat.png"
-				style="height: 50px;" id="iconImage">
+			<img class="rounded" alt="pumpkin"
+				src="static/images/pumpkinWithHat.png" style="height: 50px;"
+				id="iconImage">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-				<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item nav-link"><a
+						class="btn btn-secondary" href="/LibraryManager/books">Books</a>
+				</li>
+				<c:if test="${user!=null && !isLibrarian}">
 					<li class="nav-item nav-link"><a
-							class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
+							class="btn btn-secondary"
+							href="/LibraryManager/patron?id=${user.id}">My Profile</a></li>
+				</c:if>
+				<c:if test="${isLibrarian and user != null}">
+
+					<li class="nav-item nav-link"><a
+							class="btn btn-outline-primary" href="/LibraryManager/patrons">Patrons</a>
 					</li>
-					<c:if test="${user!=null}">
-						<li class="nav-item nav-link"><a
-								class="btn btn-outline-primary" href="/LibraryManager/patron?id=${user.id}">My Profile</a>
-						</li>
-					</c:if>
-					<c:if test="${isLibrarian and user != null}">
-						<li class="nav-item nav-link"><a
-								class="btn btn-outline-primary" data-toggle="modal"
-								data-target="#add-modal">Add</a></li>
-						<li class="nav-item nav-link"><a
-								class="btn btn-outline-primary" href="/LibraryManager/patrons">Patrons</a>
-						</li>
-					</c:if>
-				</ul>
-				<div class="d-flex"> <!-- class="col navbar-nav" -->
-					<c:if test="${user != null}">
-						<p class="text-white pt-2 mr-3">
-							Welcome,
-							<c:out value="${user.first_name}"></c:out>
-						</p>
-						<a class="nav-item nav-link btn btn-outline-primary"
-							href="/LibraryManager/logout">Log Out</a>
-					</c:if>
-					<c:if test="${user == null}">
-						<a class="nav-item nav-link btn btn-outline-primary"
-							href="/LibraryManager/login">Login</a>
-					</c:if>
-				</div>
+
+					<li class="nav-item nav-link"><a
+							class="btn btn-outline-primary" data-toggle="modal"
+							data-target="#add-modal">Add Book</a></li>
+				</c:if>
+			</ul>
+			<div class="d-flex">
+				<!-- class="col navbar-nav" -->
+				<c:if test="${user != null}">
+					<p class="text-white pt-1 mr-3">
+						Welcome,
+						<c:out value="${user.username}"></c:out>
+					</p>
+					<a class="btn btn-outline-primary"
+						href="/LibraryManager/logout">Log Out</a>
+				</c:if>
+				<c:if test="${user == null}">
+					<a class="btn btn-outline-primary"
+						href="/LibraryManager/login">Login</a>
+				</c:if>
 			</div>
-		
+		</div>
+
 	</div>
 </nav>
 
