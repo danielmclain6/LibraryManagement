@@ -69,7 +69,7 @@ public class PatronsServlet extends HttpServlet {
 //		System.out.println("called listPatrons, allPatrons = " + patrons);
 
 		Patron patron = null;
-		List<Book> books = new ArrayList<Book>();
+		List<BookCheckoutWithBook> books = new ArrayList<BookCheckoutWithBook>();
 		if (request.getParameter("patron_id") != null) {
 			patron = patronDao.getPatronById(Integer.parseInt(request.getParameter("patron_id")));
 			PatronHistory his = patronDao.getPatronHistoryById(patron.getId());
@@ -81,7 +81,7 @@ public class PatronsServlet extends HttpServlet {
 //				System.out.println("Error?????");
 				for (BookCheckoutWithBook hisory : lis) {
 					if(hisory.getReturned() == null) {
-						books.add(hisory.getBook());
+						books.add(hisory);
 					}
 				}
 			}
