@@ -2,15 +2,15 @@
 <%@ include file="navBar.jsp"%>
 
 <div class="container">
-	Index <br> <br> <br> <br>
+	<br> <br> <br> <br>
 
-	<c:if test="${user == null}">
+	<%-- <c:if test="${user == null}">
 		<a class="btn" href="login">Login</a>
-	</c:if>
-	<a class="btn" href="books">Books</a>
+	</c:if> --%>
+	<!-- <a class="btn" href="books">Books</a> -->
 
 	<div class='container'>
-		<label for='login-button'>Login</label>
+		<!-- <label for='login-button'>Login</label> -->
 		<div class='row'>
 			<div class='col'>
 
