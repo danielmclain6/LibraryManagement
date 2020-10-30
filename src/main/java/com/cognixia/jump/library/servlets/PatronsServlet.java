@@ -58,10 +58,13 @@ public class PatronsServlet extends HttpServlet {
 		List<Patron> patrons = patronDao.getAllPatrons();
 
 		if (action == null || action.equals("all")) {
+			request.setAttribute("filter", "all");
 			patrons = patronDao.getAllPatrons();
 		} else if (action.equals("all_available")) {
+			request.setAttribute("filter", "all_available");
 			patrons = patronDao.getAllAvailablePatrons();
 		} else if (action.equals("all_frozen")) {
+			request.setAttribute("filter", "all_frozen");
 			patrons = patronDao.getAllFrozenPatrons();
 		}
 

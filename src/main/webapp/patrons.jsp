@@ -38,9 +38,22 @@
 						<c:if test="${!p.account_frozen}">
 							<tr>
 						</c:if>
-						<td><a href="/LibraryManager/patrons?patron_id=${p.id}">
+						<c:if test="${filter eq 'all' or filter eq null}">
+							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all">
 								<c:out value="${p.id}"></c:out>
 						</a></td>
+						</c:if>
+						<c:if test="${filter eq 'all_available'}">
+							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_available">
+								<c:out value="${p.id}"></c:out>
+						</a></td>
+						</c:if>
+						<c:if test="${filter eq 'all_frozen'}">
+							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_frozen">
+								<c:out value="${p.id}"></c:out>
+						</a></td>
+						</c:if>
+						
 						<td><c:out value="${p.username}"></c:out></td>
 						<td><c:out value="${p.account_frozen}"></c:out></td>
 						<td>1234</td>
