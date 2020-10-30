@@ -36,7 +36,7 @@
         </p>
         <c:if test="${isLibrarian}">
             <c:if test="${book.rented}">
-                <a href="return_book?isbn=${book.isbn}" class="btn btn-outline-primary">Mark as Returned</a>
+                <a href="return_book?isnb=${book.isbn}" class="btn btn-outline-primary">Book Returned</a>
             </c:if>
             <c:if test="${!book.rented}">
                 <a href="edit_book?isbn=${book.isbn}" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editModal">Edit</a>
@@ -79,12 +79,11 @@
 
         <c:if test="${!isLibrarian}">
             <c:if test="${book.rented}">
-                <a href="" class="btn btn-outline-primary">Book Unavailable</a>
+                <a href="" class="btn btn-outline-primary">Cannot checkout</a>
             </c:if>
-            <c:if test="${!book.rented && !isFrozen}">
-                <a href="checkout_book?isbn=${book.isbn}" class="btn btn-outline-primary">Checkout</a>
+            <c:if test="${!book.rented}">
+                <a href="checkout_book?isnb=${book.isbn}" class="btn btn-outline-primary">Checkout</a>
             </c:if>
-            <c:if test="${isFrozen}"><p>Checkout not available, your account is pending approval</p></c:if>
         </c:if>
         <hr>
     </c:forEach>

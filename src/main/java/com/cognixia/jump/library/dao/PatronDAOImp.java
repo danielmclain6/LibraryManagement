@@ -279,7 +279,7 @@ public class PatronDAOImp implements PatronDAO {
 		List<Patron> patrons = new ArrayList<>();
 		ResultSet rs = null;
 		try (PreparedStatement state = conn.prepareStatement("select * from patron where account_frozen = ?")) {
-			state.setString(1, "true");
+			state.setInt(1, 1);
 			rs = state.executeQuery();
 
 			while (rs.next()) {
