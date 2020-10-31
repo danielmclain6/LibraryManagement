@@ -3,20 +3,38 @@
 
 <div class="container">
 
-	<hr>
-	<hr>
-	<hr>
-	<hr>
-	<a href="/LibraryManager/books?which_filter=all_rented">All rented
-		books</a>
-	<a href="/LibraryManager/books?which_filter=all_available">all_available</a>
-	<c:if test="${ isLibrarian }">
-        I am a librarian
-    </c:if>
-	<c:if test="${ !isLibrarian }">
-        I am a NOT librarian
-    </c:if>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="static/images/pumpkin.jpg" class="d-block w-100" alt="pumpkin">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/image1.jpg" class="d-block w-100" alt="spooky desk">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/jackolanterns.jpg" class="d-block w-100" alt="jacko lanterns ">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
+	<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all">All</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_rented">All Rented</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_available">All Available</a>
+  </div>
+</div>
 	<div class="row p-5">
 		<c:forEach var="book" items="${books}">
 			<hr>
