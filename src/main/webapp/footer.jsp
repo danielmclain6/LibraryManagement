@@ -7,7 +7,26 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    
 
+    <footer>
+    	<div class="row align-items-center justify-content-around text-center">
+    		<div class="col-sm">
+    			<p>Help</p>
+    			<p><a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a></p>
+    		</div>
+    		<div class="col-sm">
+    			<p>Contributers:<br>
+    				Darrick<br>
+    				Lia<br>
+    				Cody<br>
+    				Danielle<br>
+    				Daniel<br>
+    				Tylen</p>
+    		</div>
+    	</div>
+    </footer>
+</div>
 </body>
 
 </html>
