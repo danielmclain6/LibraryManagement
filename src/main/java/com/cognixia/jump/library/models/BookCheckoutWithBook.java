@@ -7,7 +7,9 @@ public class BookCheckoutWithBook extends BookCheckout
 {
 	private Book b;
 	
-	public BookCheckoutWithBook(int checkout_id, int patron_id, String isbn, Date checkedout, Date due_date, Date returned)
+	public BookCheckoutWithBook(int checkout_id, int patron_id, 
+								String isbn, Date checkedout, 
+								Date due_date, Date returned)
 	{
 		super(patron_id, isbn, checkedout, due_date, returned);
 		this.checkout_id = checkout_id;

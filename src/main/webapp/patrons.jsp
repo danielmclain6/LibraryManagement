@@ -3,7 +3,7 @@
 
 <div class="container pt-5">
 	<div class="row justify-content-around">
-		<div class="col-5 border rounded m-1 frosty-bg" id="patrons-table">
+		<div class="col-sm-5 border rounded m-1 frosty-bg" id="patrons-table">
 
 			<div class="dropdown m-1">
 				<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
@@ -12,10 +12,11 @@
 
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<a class="dropdown-item"
-						href="/LibraryManager/patrons?which_filter=all">All Patrons</a> <a
-						class="dropdown-item"
+						href="/LibraryManager/patrons?which_filter=all">All Patrons</a>
+					<a class="dropdown-item"
 						href="/LibraryManager/patrons?which_filter=all_frozen">Frozen
-						Patrons</a> <a class="dropdown-item"
+						Patrons</a>
+					<a class="dropdown-item"
 						href="/LibraryManager/patrons?which_filter=all_available">Active
 						Patrons</a>
 				</div>
@@ -27,11 +28,12 @@
 						<th scope="col">id</th>
 						<th scope="col">username</th>
 						<th scope="col">Is Frozen</th>
-						<th scope="col"># of Books</th>
+						<!--<th scope="col"># of Books</th>-->
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="p" items="${patrons}">
+
 						<c:if test="${p.account_frozen}">
 							<tr class="table-danger">
 						</c:if>
@@ -39,31 +41,44 @@
 							<tr>
 						</c:if>
 						<c:if test="${filter eq 'all' or filter eq null}">
-							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all">
-								<c:out value="${p.id}"></c:out>
-						</a></td>
+							<td>
+								<a
+									href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all">
+									<c:out value="${p.id}"></c:out>
+								</a>
+							</td>
 						</c:if>
 						<c:if test="${filter eq 'all_available'}">
-							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_available">
-								<c:out value="${p.id}"></c:out>
-						</a></td>
+							<td>
+								<a
+									href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_available">
+									<c:out value="${p.id}"></c:out>
+								</a>
+							</td>
 						</c:if>
 						<c:if test="${filter eq 'all_frozen'}">
-							<td><a href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_frozen">
-								<c:out value="${p.id}"></c:out>
-						</a></td>
+							<td>
+								<a
+									href="/LibraryManager/patrons?patron_id=${p.id}&which_filter=all_frozen">
+									<c:out value="${p.id}"></c:out>
+								</a>
+							</td>
 						</c:if>
-						
-						<td><c:out value="${p.username}"></c:out></td>
-						<td><c:out value="${p.account_frozen}"></c:out></td>
-						<td>1234</td>
+
+						<td>
+							<c:out value="${p.username}"></c:out>
+						</td>
+						<td>
+							<c:out value="${p.account_frozen}"></c:out>
+						</td>
+						<!-- <td>1234</td> -->
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 
-		<div class="col-5 m-1">
+		<div class="col-sm-5 m-1">
 			<div class="row text-center justify-content-center"
 				id="preview-patron-row">
 				<div class="col-12 border rounded preview-parton frosty-bg pb-4">
@@ -134,8 +149,9 @@
 						</c:if>
 						<c:if test="${ books != null }">
 							<h4>
-								<strong><c:out value="${patron.first_name }"></c:out>'s</strong> Checkout History 
-								
+								<strong><c:out value="${patron.first_name }"></c:out>'s</strong>
+								Checkout History
+
 							</h4>
 							<table class="table">
 								<thead class="thead-dark">
@@ -147,12 +163,15 @@
 								<tbody>
 									<c:forEach var="book" items="${ books }">
 										<tr>
-											<td scope="row"><a
-												href="/LibraryManager/book?isbn=${book.book.isbn}"
-												alt="${book.book.title}"> <c:out
-														value="${ book.book.title }"></c:out>
-											</a></td>
-											<td><c:out value="${ book.due_date }"></c:out></td>
+											<td scope="row">
+												<a href="/LibraryManager/book?isbn=${book.book.isbn}"
+													alt="${book.book.title}">
+													<c:out value="${ book.book.title }"></c:out>
+												</a>
+											</td>
+											<td>
+												<c:out value="${ book.due_date }"></c:out>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

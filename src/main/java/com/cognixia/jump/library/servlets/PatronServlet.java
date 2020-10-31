@@ -1,7 +1,6 @@
 package com.cognixia.jump.library.servlets;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,9 @@ import com.cognixia.jump.library.dao.BookDao;
 import com.cognixia.jump.library.dao.BookDaoImp;
 import com.cognixia.jump.library.dao.PatronDAO;
 import com.cognixia.jump.library.dao.PatronDAOImp;
-import com.cognixia.jump.library.models.Patron;
 import com.cognixia.jump.library.models.BookCheckout;
+import com.cognixia.jump.library.models.BookCheckoutWithBook;
+import com.cognixia.jump.library.models.Patron;
 
 /**
  * Servlet implementation class PatronServelt
@@ -60,14 +60,26 @@ public class PatronServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int id = Integer.parseInt(request.getParameter("id"));
 		Patron p = patronDao.getPatronById(id);
-		List<BookCheckout> bookcheckouts = bookcheckoutDao.getBookHistory(p.getId());
+		List<BookCheckout> historybookcheckouts = bookcheckoutDao.getBookHistory(p.getId());
+		List<BookCheckoutWithBook> currentBooks = new ArrayList<BookCheckoutWithBook>();
 		
-		if(p != null && bookcheckouts.size() != 0) {
-			
+		if(p != null && historybookcheckouts.size() != 0) {
+			for (BookCheckout checked: historybookcheckouts) {
+				if (checked.getReturned() == null) {
+					BookCheckoutWithBook book = new BookCheckoutWithBook(checked.getCheckout_id(),p.getId(), 
+																		checked.getIsbn(), checked.getCheckedout(), 
+																		checked.getDue_date(),checked.getReturned());
+					
+					currentBooks.add(book);
+				}
+				
+				
+			}
 		}
 		
 		request.setAttribute("patron", p);
-		request.setAttribute("bookcheckouts", bookcheckouts);
+		request.setAttribute("currentbooks", currentBooks);
+		request.setAttribute("historybookcheckouts", historybookcheckouts);
 		request.setAttribute("userId", 
 				session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
 		request.setAttribute("isLibrarian", 
