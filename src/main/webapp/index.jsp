@@ -1,8 +1,7 @@
-<%@ include file="header.jsp"%>
-<%@ include file="navBar.jsp"%>
+<%@ include file="header.jsp" %>
+<%@ include file="landingnavBar.jsp" %>
 
-<div class="container">
-	<br> <br> <br> <br>
+
 
 	<%-- <c:if test="${user == null}">
 		<a class="btn" href="login">Login</a>
@@ -21,7 +20,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 
 
 

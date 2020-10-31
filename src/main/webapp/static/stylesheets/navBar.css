@@ -1,3 +1,78 @@
-#iconImage {
-    height: 50px;
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #0E1122;
 }
+
+.navbar-brand-img {
+	width: 15%;
+	height: auto;
+	left: 19px;
+	top: 6px;
+}
+
+.navbar-brand img {
+	width: 100%;
+	height: auto;
+	border-radius: 45%;
+    border: 1px solid #2B491A;
+    box-shadow: 0px 3px 3px RGBA(63,107,50,.25);
+    
+}
+header .navbar{
+	background-color: #6BB543;
+}
+
+#landingNavSite {
+	font-family: 'Roboto', sans-serif;
+	font-size: 210%;
+	font-style: normal;
+	font-weight: 500;
+	text-align: left;
+	color: #C7C7CB;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #2B491A;
+	text-shadow: 0px 3px 3px RGBA(63,107,50,.25);	
+}
+
+#navSite {
+	font-family: 'Roboto', sans-serif;
+	font-size: 150%;
+	font-style: normal;
+	font-weight: 400;
+	text-align: left;
+	color: #C7C7CB;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #2B491A;
+	text-shadow: 0px 2px 2px RGBA(63,107,50,.25);
+}
+
+.navbar-text {
+	color: #C7C7CB;
+	text-shadow: 0px 2px 2px RGBA(63,107,50,.25);
+}
+
+.nav-item .btn{
+	font-family: 'Roboto', sans-serif;
+	background-color: #5A545E;
+	border: 1px solid #38323C;
+	font-weight: 500;
+	color: #B6B6B6;
+	box-shadow: 0px 3px 3px 0px #000000 25%;
+}
+
+a {
+	color: #FFFFFF;
+}
+
+a::hover {
+	color: #6BB543;
+}
+
+a::visited, a::active {
+	color: #878891;
+}
+
+footer {
+	color: #535151;
+}
+
