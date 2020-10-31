@@ -1,105 +1,123 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div class="container">
-	<h1>Patrons page</h1>
-	<div class="col-5 m-1 border rounded">
-		<h1>Patron page</h1>
-		<p>
-			id =
-			<c:out value="${patron.id}"></c:out>
-		</p>
-		<p>
-			first_name =
-			<c:out value="${patron.first_name}"></c:out>
-		</p>
-		<p>
-			last_name =
-			<c:out value="${patron.last_name}"></c:out>
-		</p>
-		<p>
-			username =
-			<c:out value="${patron.username}"></c:out>
-		</p>
-		<p>
-			password =
-			<c:out value="${patron.password}"></c:out>
-		</p>
-		<p>
-			account_frozen =
-			<c:out value="${patron.account_frozen}"></c:out>
-		</p>
+<div class="container pt-5">
+	<div class="row justify-content-around">
+		<div class="col-5 border rounded p-5">
+			<h1>My Profile</h1>
+			<hr>
+			<p>
+				Name:
+				<c:out value="${patron.first_name}"></c:out>
+				<c:out value="${patron.last_name}"></c:out>
+			</p>
 
-		<a href="freeze_account?id=${patron.id}">
-			<c:if test="${patron.account_frozen && isLibrarian}">
-				reactivate
+			<p>
+				Username:
+				<c:out value="${patron.username}"></c:out>
+			</p>
+			<p>
+				password:
+				<c:out value="${patron.password}"></c:out>
+			</p>
+			<p>
+				account_frozen:
+				<c:out value="${patron.account_frozen}"></c:out>
+			</p>
+
+			<a href="freeze_account?id=${patron.id}">
+				<c:if test="${patron.account_frozen && isLibrarian}">
+				Reactivate
 			</c:if>
-			<c:if test="${!patron.account_frozen && isLibrarian}">
-				freeze account
+				<c:if test="${!patron.account_frozen && isLibrarian}">
+				Freeze Account
 			</c:if>
-		</a>
-
-
+			</a>
+		</div>
+		<img class="col-sm-5 rounded" alt="books image"
+			src="./static/images/pumpkinPatch.jpg">
 	</div>
 	<hr />
-	<div class="col-5 m-1 border rounded">
-		<c:if test="${book == null}">
-			no book checked out
-		</c:if>
-		<c:if test="${ book != null }">
-			<p>
-				isbn =
-				<c:out value="${book.isbn}"></c:out>
-			</p>
-			<p>
-				title =
-				<c:out value="${book.title}"></c:out>
-			</p>
-			<p>
-				descr =
-				<c:out value="${book.descr}"></c:out>
-			</p>
-			<p>
-				rented =
-				<c:out value="${book.rented}"></c:out>
-			</p>
-			<p>
-				added_to_library =
-				<c:out value="${book.added_to_library}"></c:out>
-			</p>
-		</c:if>
-	</div>
+	<div class="col mb-4 border rounded p-4 bg-secondary">
+		<h2 class="text-white">Current Checkouts</h2>
 
-	<div class="col border rounded">
-		<h1>History</h1>
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">Checkout Date</th>
-					<th scope="col">dueDate</th>
-					<th scope="col">returned</th>
-					<th scope="col">book isbn</th>
+					<th class="text-white" scope="col">Title</th>
+					<th class="text-white" scope="col">Book Description</th>
+					<th class="text-white" scope="col">Due Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${ currentbooks == null }">
+					<h4>No checkouts currently</h4>
+				</c:if>
+
+				<c:if test="${ currentbooks != null }">
+					<c:forEach var="book" items="${currentbooks}">
+						<tr>
+							<th scope="row" class="text-white">
+								<c:out value="${ book.book.title }"></c:out>
+							</th>
+							<td class="text-white">
+								<c:out value="${ book.book.descr }"></c:out>
+							</td>
+							<td class="text-white">
+								<c:out value="${ book.due_date }"></c:out>
+							</td>
+
+						</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+
+
+
+	</div>
+
+	<div class="col bg-secondary border rounded p-4">
+		<h2 class="text-white">History</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="text-white" scope="col">ISBN</th>
+					<th class="text-white" scope="col">Checkout Date</th>
+					<th class="text-white" scope="col">Due Date</th>
+					<th class="text-white" scope="col">Returned Date</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:if test="${ bookcheckouts.size() == 0 }">
 					<h1>No history</h1>
 				</c:if>
-				<c:if test="${ bookcheckouts.size() != 0 }">
-					<c:forEach var="history" items="${bookcheckouts}">
+				<c:if test="${ historybookcheckouts.size() != 0 }">
+					<c:forEach var="history" items="${historybookcheckouts}">
+
 						<tr>
-							<th scope="row">
+							<th scope="row" class="text-white">
 								<c:out value="${ history.isbn }"></c:out>
 							</th>
-							<td>
-								<c:out value="${history.due_date}"></c:out>
-							</td>
-							<td>
+							<td class="text-white">
 								<c:out value="${history.checkedout}"></c:out>
 							</td>
-							<td>
-								<c:out value="${history.returned}"></c:out>
+							<td class="text-white">
+								<c:out value="${history.due_date}"></c:out>
 							</td>
+
+
+							<c:if test="${history.returned == null }">
+								<td class="text-danger">Not returned</td>
+							</c:if>
+
+							<c:if test="${history.returned != null }">
+								<td class="text-white">
+									<c:out value="${history.returned}"></c:out>
+								</td>
+							</c:if>
+
+
 						</tr>
 					</c:forEach>
 				</c:if>

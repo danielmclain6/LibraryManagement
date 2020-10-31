@@ -22,15 +22,15 @@ public class ConnectionManager {
 	private static void makeConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("Registered Driver");
-			System.out.println("NEW");
+//			System.out.println("Registered Driver");
+//			System.out.println("NEW");
 			connect = DriverManager.getConnection(URL, USERNAME, PASSWORDMAC);
-			System.out.println("Connected");
+//			System.out.println("Connected");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("trying alt creds");
+//			System.out.println("trying alt creds");
 			try {
 				connect = DriverManager.getConnection(URL, USERNAME, PASSWORDWindows);
 			} catch (SQLException e1) {

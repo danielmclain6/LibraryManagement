@@ -202,26 +202,25 @@ public class PatronDAOImp implements PatronDAO {
 	@Override
 	public PatronHistory getPatronHistoryById(int patId) {
 		try (PreparedStatement pstmt = conn.prepareStatement(
-				"select * from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where patron.patron_id = ?")) {
-			PatronHistory ph;
+				"select * from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where book_checkout.patron_id = ?")) {
+			PatronHistory ph = null;
 
 			pstmt.setInt(1, patId);
 
 			ResultSet rs = pstmt.executeQuery();
 
-			rs.next();
-			ph = new PatronHistory(rs.getInt("patron_id"), rs.getString("first_name"), rs.getString("last_name"),
-					rs.getString("username"), rs.getString("password"), rs.getBoolean("account_frozen"));
-			BookCheckoutWithBook bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
-					rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
-			ph.addHistory(bc);
-
-			while (rs.next()) {
-				bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
+			if(rs.next()) {
+				ph = new PatronHistory(rs.getInt("patron_id"), rs.getString("first_name"), rs.getString("last_name"),
+						rs.getString("username"), rs.getString("password"), rs.getBoolean("account_frozen"));
+				BookCheckoutWithBook bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
 						rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
 				ph.addHistory(bc);
+				while (rs.next()) {
+					bc = new BookCheckoutWithBook(rs.getInt("checkout_id"), patId, rs.getString("isbn"),
+							rs.getDate("checkedout"), rs.getDate("due_date"), rs.getDate("returned"));
+					ph.addHistory(bc);
+				}
 			}
-
 			return ph;
 
 		} catch (SQLException e) {
@@ -229,6 +228,25 @@ public class PatronDAOImp implements PatronDAO {
 		}
 
 		return null;
+
+	}
+	
+	@Override
+	public int getPatronBooksCheckedout(int patId) {
+		try (PreparedStatement pstmt = conn.prepareStatement(
+				"select count(*) as books_rented from patron inner join book_checkout on patron.patron_id = book_checkout.patron_id inner join book on book.isbn = book_checkout.isbn where patron.patron_id = ? and book.rented = 1")) {
+		
+			pstmt.setInt(1, patId);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			return rs.getInt("books_rented");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return 0;
 
 	}
 
@@ -261,7 +279,7 @@ public class PatronDAOImp implements PatronDAO {
 		List<Patron> patrons = new ArrayList<>();
 		ResultSet rs = null;
 		try (PreparedStatement state = conn.prepareStatement("select * from patron where account_frozen = ?")) {
-			state.setString(1, "true");
+			state.setInt(1, 1);
 			rs = state.executeQuery();
 
 			while (rs.next()) {

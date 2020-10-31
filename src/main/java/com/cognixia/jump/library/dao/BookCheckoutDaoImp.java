@@ -55,7 +55,7 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 		try (PreparedStatement state = conn.prepareStatement(CHECKOUT_BOOK);
 				PreparedStatement bookState = conn.prepareStatement("update book set rented = 1 where isbn = ?")) {
-
+			
 			state.setInt(1, p.getId());
 			state.setString(2, b.getIsbn());
 			state.setString(3, today);
@@ -268,24 +268,24 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 			while (rs.next()) {
 				int checkoutId = rs.getInt("checkout_id");
-				System.out.println(checkoutId);
+//				System.out.println(checkoutId);
 				int patronId = rs.getInt("patron_id");
-				System.out.println(patronId);
+//				System.out.println(patronId);
 
 				String isbn = rs.getString("isbn");
-				System.out.println(isbn);
+//				System.out.println(isbn);
 				Date checkedOut = rs.getDate("checkedout");
-				System.out.println(checkedOut);
+//				System.out.println(checkedOut);
 				Date dueDate = rs.getDate("due_date");
-				System.out.println(dueDate);
+//				System.out.println(dueDate);
 				if (rs.getString("returned") != null) {
 					returnDate = rs.getDate("returned");
 				} else {
 					returnDate = null;
 				}
-				System.out.println(returnDate);
+//				System.out.println(returnDate);
 				BookCheckout bc = new BookCheckout(patronId, isbn, checkedOut, dueDate, returnDate);
-				System.out.println(bc);
+//				System.out.println(bc);
 				bookHistory.add(bc);
 			}
 
@@ -307,25 +307,25 @@ public class BookCheckoutDaoImp implements BookCheckoutDao {
 
 			while (rs.next()) {
 				int checkoutId = rs.getInt("checkout_id");
-				System.out.println(checkoutId);
+//				System.out.println(checkoutId);
 				int patronId = rs.getInt("patron_id");
-				System.out.println(patronId);
+//				System.out.println(patronId);
 
 				String isbn = rs.getString("isbn");
-				System.out.println(isbn);
+//				System.out.println(isbn);
 				Date checkedOut = rs.getDate("checkedout");
-				System.out.println(checkedOut);
+//				System.out.println(checkedOut);
 				Date dueDate = rs.getDate("due_date");
-				System.out.println(dueDate);
+//				System.out.println(dueDate);
 
 				if (rs.getString("returned") != null) {
 					returnDate = rs.getDate("returned");
 				} else {
 					returnDate = null;
 				}
-				System.out.println(returnDate);
+//				System.out.println(returnDate);
 				BookCheckout bc = new BookCheckout(patronId, isbn, checkedOut, dueDate, returnDate);
-				System.out.println(bc);
+//				System.out.println(bc);
 				bookHistory.add(bc);
 			}
 

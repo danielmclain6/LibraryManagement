@@ -16,7 +16,10 @@ import javax.servlet.http.HttpSession;
 import com.cognixia.jump.library.connection.ConnectionManager;
 import com.cognixia.jump.library.dao.PatronDAO;
 import com.cognixia.jump.library.dao.PatronDAOImp;
+import com.cognixia.jump.library.models.Book;
+import com.cognixia.jump.library.models.BookCheckoutWithBook;
 import com.cognixia.jump.library.models.Patron;
+import com.cognixia.jump.library.models.PatronHistory;
 
 /**
  * Servlet implementation class PatronsServlet
@@ -55,23 +58,41 @@ public class PatronsServlet extends HttpServlet {
 		List<Patron> patrons = patronDao.getAllPatrons();
 
 		if (action == null || action.equals("all")) {
+			request.setAttribute("filter", "all");
 			patrons = patronDao.getAllPatrons();
 		} else if (action.equals("all_available")) {
+			request.setAttribute("filter", "all_available");
 			patrons = patronDao.getAllAvailablePatrons();
 		} else if (action.equals("all_frozen")) {
+			request.setAttribute("filter", "all_frozen");
 			patrons = patronDao.getAllFrozenPatrons();
 		}
 
-		System.out.println(action + " < - action");
-		System.out.println("called listPatrons, allPatrons = " + patrons);
+//		System.out.println(action + " < - action");
+//		System.out.println("called listPatrons, allPatrons = " + patrons);
 
 		Patron patron = null;
+		List<BookCheckoutWithBook> books = new ArrayList<BookCheckoutWithBook>();
 		if (request.getParameter("patron_id") != null) {
 			patron = patronDao.getPatronById(Integer.parseInt(request.getParameter("patron_id")));
+			PatronHistory his = patronDao.getPatronHistoryById(patron.getId());
+			if(his != null) {
+				List<BookCheckoutWithBook> lis = his.getHistory();
+//				System.out.println("PRINTING!!!");
+//				System.out.println(his.getHistory());
+//				System.out.println(lis);
+//				System.out.println("Error?????");
+				for (BookCheckoutWithBook hisory : lis) {
+					if(hisory.getReturned() == null) {
+						books.add(hisory);
+					}
+				}
+			}
 		}
 
 		request.setAttribute("patrons", patrons);
 		request.setAttribute("patron", patron);
+		request.setAttribute("books", books.size() == 0 ? null : books);
 		request.setAttribute("userId", session.getAttribute("userId") == null ? null : session.getAttribute("userId"));
 		request.setAttribute("isLibrarian",
 				session.getAttribute("isLibrarian") == null ? false : session.getAttribute("isLibrarian"));
