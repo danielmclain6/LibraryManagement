@@ -2,22 +2,15 @@
 <%@ include file="navBar.jsp"%>
 
 <div class="container">
-	<br> <br> <br> <br>
-
-	<%-- <c:if test="${user == null}">
-		<a class="btn" href="login">Login</a>
-	</c:if> --%>
-	<!-- <a class="btn" href="books">Books</a> -->
-
 	<div class='container'>
-		<!-- <label for='login-button'>Login</label> -->
-		<div class='row'>
-			<div class='col'>
-
-				<a class="btn login-button btn-lg" href="login" id='login-button'>Login</a>
+		<div class='row justify-content-center pt-4'>
+			<div class='col floaty-divs'>
+			<h1 class="text-center">Books</h1>
+				<a class="btn book-button btn-lg" href="books"></a>
 			</div>
-			<div class='col'>
-				<a class="btn book-button btn-lg" href="books">Books</a>
+			<div class='col text-center floaty-divs'>
+			<h1 class="text-center">LogIn</h1>
+				<a class="btn login-button btn-lg" href="login" id='login-button'></a>
 			</div>
 		</div>
 	</div>

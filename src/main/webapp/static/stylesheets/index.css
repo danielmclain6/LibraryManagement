@@ -2,38 +2,69 @@ body {
     background-color:white;
 }
 
+path {
+  fill: transparent;
+}
+
+
+/***floaty stuff****/
+
+@keyframes float {
+	100% {
+	    transform: translateY(-30px);
+	}
+}
+@keyframes bob {
+	0% {
+	    transform: translateY(-30px);
+	}
+	100% {
+	    transform: translateY(0);
+	}
+}
+.floaty-divs {
+	padding-top: 100px;
+    animation-name: float, bob;
+    animation-duration: 2s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-delay: 0s, 0.5s;
+    animation-direction: normal, alternate;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards;
+}
+/*******/
+
+
 .login-button {
-    background: url("../images/fullMoon.jpg") 100%;
+  background: url("../images/fullMoon.jpg") 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   border: none;
-  color: white;
   padding: 20px;
   text-align: center;
   
   display: inline-block;
   font-size: 24px;
-  margin: 4px 2px;
+  margin: 0 auto;
   border-radius: 50%;
   width:400px;
   height:400px;
   line-height:20px;
-  text-align: center;
-  
+  box-shadow: 10px 10px 10px black;
  
 }
 
 .book-button {
-    background: url("../images/hallwayOfBooks.jpg") ;
-   border: none;
-  color: white;
+  background: url("../images/hallwayOfBooks.jpg") ;
+  border: none;
   padding: 20px;
   text-align: center;
   
   display: inline-block;
   font-size: 25px;
-  margin: 4px 2px;
   border-radius: 50%;
   width:400px;
   height:400px;
   line-height:20px;
-  text-align: center;
+  box-shadow: 10px 10px 10px black;
 }
