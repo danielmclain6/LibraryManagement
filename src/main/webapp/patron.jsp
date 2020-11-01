@@ -16,13 +16,20 @@
 				Username:
 				<c:out value="${patron.username}"></c:out>
 			</p>
+			
 			<p>
-				password:
-				<c:out value="${patron.password}"></c:out>
-			</p>
-			<p>
-				account_frozen:
-				<c:out value="${patron.account_frozen}"></c:out>
+				Account Status: 
+				<c:choose>
+					<c:when test="${patron.account_frozen}">
+					Frozen
+					</c:when>
+					<c:otherwise>
+					Active
+					</c:otherwise>
+				
+				
+				</c:choose>
+				
 			</p>
 
 			<a href="freeze_account?id=${patron.id}">

@@ -27,12 +27,12 @@
 
 	<div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Filter
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all">All</a>
-	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_rented">All Rented</a>
-	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_available">All Available</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all">All Books</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_rented">Rented Books</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_available">Available Books</a>
   </div>
 </div>
 	<div class="row p-5">
@@ -106,7 +106,7 @@
 												<textarea class="form-control" name="descr" id="descrInput"
 													placeholder="descr"><c:out value="${book.descr}"></c:out></textarea>
 											</div>
-
+											
 										</div>
 
 										<div class="modal-footer">
@@ -126,7 +126,7 @@
 
 				<c:if test="${!isLibrarian}">
 					<c:if test="${book.rented}">
-						<a href="" class="btn btn-outline-danger">Book Unavailable</a>
+						<a href="" class="btn btn-danger">Book Unavailable</a>
 					</c:if>
 					<c:if test="${!book.rented}">
 						<a href="checkout_book?isbn=${book.isbn}"
