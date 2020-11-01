@@ -1,18 +1,25 @@
 
-<div class="container">
+<div class="container mt-3">
 	<footer>
 		<div class="row align-items-center justify-content-around text-center">
-			<div class="col-sm">
+			<div class="col">
 				<p>Help</p>
 				<p>
 					<a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a>
 				</p>
 			</div>
-			<div class="col-sm">
-				<p>
-					Contributers:<br> Darrick<br> Lia<br> Cody<br>
-					Danielle<br> Daniel<br> Tylen
-				</p>
+			<div class="col">
+				<div class="row"><p class="text-center">Contributers:</p></div>
+				<div class="row justify-content-around m-3">
+					<a class="col" href="">Cody Hertz</a>
+					<a class="col" href="">Danielle Bequeaith</a>
+					<a class="col" href="">Daniel Mclain</a>
+					<a class="col" href="">TylenM</a>
+				</div>
+				<div class="row justify-content-center m-3">
+					<a class="col" href="">Darrick Troung</a>
+					<a class="col" href="https://github.com/liamcclane">Lia McClane</a>
+				</div>
 			</div>
 		</div>
 	</footer>
