@@ -7,7 +7,7 @@
 
 		<div id="article">
 			<p id="isbn" class="text-light">
-				ISBN =
+				ISBN:
 				<c:out value="${book.isbn}"></c:out>
 			</p>
 			<article class="shadow">
