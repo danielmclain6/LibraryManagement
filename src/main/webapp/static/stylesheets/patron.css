@@ -1,0 +1,74 @@
+#patron_page {
+	background-color: black;
+	overflow: hidden;
+}
+
+#patron_book_card {
+	background-color: rgb(184, 184, 184);
+	height: 60vh;
+	padding-top: 20vh;
+}
+
+#patron_book_card article {
+	padding: 30px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 30px;
+	background-color: rgba(255, 255, 255, .9);
+}
+
+#patron_book_descr {
+	min-height: 100px;
+}
+
+#patron_isbn {
+	text-align: right;
+}
+
+#patron_card {
+	background-color: rgb(184, 184, 184);
+	/* height: 60vh; */
+	padding: 1vh;
+}
+
+#profile_picture {
+	position: absolute;
+	z-index: 10;
+	border-radius: 10px;
+}
+
+#patron_card article {
+	padding: 30px;
+	text-align: right;
+	border-radius: 30px;
+	background-color: rgba(255, 255, 255, .9);
+	vertical-align: middle;
+}
+
+#table_card {
+	background-color: rgb(184, 184, 184);
+}
+
+/* table {
+border-radius: 15px;
+} */
+
+h1 {
+	text-align: center;
+}
+
+.float-child {
+	width: 40%;
+	float: left;
+	padding: 30px;
+	margin: 40px;
+	border-radius: 25px;
+}
+
+.float-child-table {
+	width: 90%;
+	float: left;
+	padding: 40px;
+	margin: 40px;
+	border-radius: 25px;
+}
