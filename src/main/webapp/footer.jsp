@@ -11,10 +11,10 @@
 			<div class="col">
 				<div class="row"><p class="text-center">Contributers:</p></div>
 				<div class="row justify-content-around m-3">
-					<a class="col" href="">Cody Hertz</a>
-					<a class="col" href="">Danielle Bequeaith</a>
-					<a class="col" href="">Daniel Mclain</a>
-					<a class="col" href="">TylenM</a>
+					<a class="col" href="https://github.com/codyhertz">Cody Hertz</a>
+					<a class="col" href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a>
+					<a class="col" href="https://github.com/danielmclain6">Daniel Mclain</a>
+					<a class="col" href="https://github.com/TylenM">TylenM</a>
 				</div>
 				<div class="row justify-content-center m-3">
 					<a class="col" href="">Darrick Troung</a>
