@@ -2,7 +2,7 @@
 <%@ include file="navBar.jsp"%>
 
 
-	<div class="container" id="book_card">
+	<div class="container" style="margin-top:-200px;" id="book_card">
 		<div class="row justify-content-center">
 			<div class="col-9 border rounded" id="article">
 				<div class="row justify-content-center">
@@ -23,7 +23,7 @@
 							</div>
 					<c:if test="${book.rented}">
 						<div class="col">
-							<a class="btn btn-static btn-outline-danger" href="">Book not available</a>
+							<a class="btn btn-static btn-danger" href="">Book not available</a>
 						</div>
 					</c:if>
 					<c:if test="${!book.rented && !isLibrarian}">

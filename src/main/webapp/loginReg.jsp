@@ -9,11 +9,7 @@
 	</div>
 </c:if>
 
-<div class="container">
-  
-    <br>
-    <br>
-    <br>
+<div class="container" style="margin-top: -200px;">
     <div class="row justify-content-around">
 	    <div class="col-5 border rounded p-3 frosty-bg">
 	        <h1>Login</h1>

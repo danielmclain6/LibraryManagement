@@ -2,7 +2,7 @@
 <%@ include file="landingnavBar.jsp"%>
 
 
-<div class='container' style="margin-top:-100px;">
+<div class='container' style="margin-top:-200px;">
 	<div class='row justify-content-center'>
 		<div class='col text-center floaty-divs'>
 			<h1 style="color:white">Books</h1>
