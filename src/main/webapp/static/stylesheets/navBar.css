@@ -60,6 +60,18 @@ header .navbar{
 	box-shadow: 0px 3px 3px 0px #000000 25%;
 }
 
+.navbar-text .page-title {
+	font-family: 'Roboto', sans-serif;
+	font-size: 200%;
+	font-style: normal;
+	font-weight: 400;
+	text-align: left;
+	color: #C7C7CB;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #2B491A;
+	text-shadow: 0px 2px 2px RGBA(63,107,50,.25);
+}
+
 a {
 	color: #FFFFFF;
 }

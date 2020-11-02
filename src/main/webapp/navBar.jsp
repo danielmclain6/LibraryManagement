@@ -18,69 +18,85 @@
 		</button>
 		
 		
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="collapse navbar-collapse">
+		<!-- Checking the current page url to update the displayed page title -->
+				<c:set var="context" value="${pageContext.request.requestURI}" />
 
-				<div class="col-md-4 mx-auto">
-					  %><span>Page Title</span>
+				<c:if test="${context == '/LibraryManager/loginReg.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Login</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/patron.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Patron Account</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/books.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Books</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/patrons.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Patron</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/book.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Book Info</span>
+                        </div>
+                    </c:if>
+					
 				</div>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarNavAltMarkup"
-					aria-controls="navbarNavAltMarkup" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+				<div class="col-md-4 ml-auto">
+				<ul class="navbar-nav">	
+				
+				<c:if test="${context != '/LibraryManager/books.jsp' }">
+					<li class="nav-item nav-link">
+						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
+					</li>
+				</c:if>
+					
+				<c:if test="${user!=null && !isLibrarian}">
+					<li class="nav-item nav-link"><a
+							class="btn btn-secondary"
+							href="/LibraryManager/patron?id=${user.id}">My Profile</a></li>
+				</c:if>
+				<c:if test="${isLibrarian && user!=null}">
 
+					<li class="nav-item nav-link"><a
+							class="btn btn-secondary" href="/LibraryManager/patrons">Patrons</a>
+					</li>
 
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<c:set var="context" value="${pageContext.request.requestURI}" />
-					<c:out value="${context}"/>
-
-					<c:if test="${context == '/LibraryManager/loginReg.jsp'}">
-						<div class="col-md-4 mx-auto">
-							<span>Login Page</span>
-						</div>
-					</c:if>
-					<div class="col-md-4 ml-auto">
-						<ul class="navbar-nav">
-							<li class="nav-item nav-link"><a
-									class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
+					<li class="nav-item nav-link"><a
+							class="btn btn-secondary" data-toggle="modal"
+							data-target="#add-modal">Add Book</a></li>
+				</c:if>
+			</ul>
+					<c:if test="${user == null}">
+						<c:if test="${context != '/LibraryManager/loginReg.jsp'}">
+							<ul class="navbar-nav">
+							<li class="nav-item nav-link">
+								<a class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
 							</li>
-
-
-							<c:if test="${user!=null && !isLibrarian}">
-								<li class="nav-item nav-link"><a class="btn btn-secondary"
-										href="/LibraryManager/patron?id=${user.id}">My Profile</a></li>
-							</c:if>
-							<c:if test="${isLibrarian && user!=null}">
-
-								<li class="nav-item nav-link"><a class="btn btn-secondary"
-										href="/LibraryManager/patrons">Patrons</a></li>
-
-								<li class="nav-item nav-link"><a class="btn btn-secondary"
-										data-toggle="modal" data-target="#add-modal">Add Book</a></li>
-							</c:if>
-						</ul>
-						<c:if test="${user == null}">
-							<ul class="navbar-nav">
-								<li class="nav-item nav-link"><a
-										class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
-								</li>
 							</ul>
-							<div class="ml-auto">
-								<span class="navbar-text">Welcome!</span>
-							</div>
 						</c:if>
-
-						<!-- class="col navbar-nav" -->
-						<c:if test="${user != null}">
-							<ul class="navbar-nav">
-								<li class="nav-item nav-link"><a
-										class="btn btn-outline-primary" href="/LibraryManager/logout">Log
-										Out</a></li>
-							</ul>
-							<span class="navbar-text">Welcome, <c:out
-									value="${user.username}"></c:out>
-						</c:if>
+						<div class="ml-auto">
+    						<span class="navbar-text">Welcome!</span>
+    					</div>
+					</c:if>
+					
+				<c:if test="${user != null}">
+					<ul class="navbar-nav">
+						<li class="nav-item nav-link">
+							<a class="btn btn-outline-primary" href="/LibraryManager/logout">Log Out</a>
+						</li>
+					</ul>
+						<span class="navbar-text">Welcome,
+						<c:out value="${user.username}"></c:out>
+						
+				</c:if>
 
 					</div>
 				</div>

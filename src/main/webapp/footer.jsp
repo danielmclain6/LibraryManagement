@@ -1,5 +1,7 @@
 
+    
 <div class="container mt-3">
+<<<<<<< HEAD
 	<footer>
 		<div class="row align-items-center justify-content-around text-center">
 			<div class="col-4">
@@ -32,6 +34,25 @@
 			</div>
 		</div>
 	</footer>
+=======
+    <footer>
+    	<div class="row align-items-center justify-content-around text-center">
+    		<div class="col-sm">
+    			<p>Help</p>
+    			<p><a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a></p>
+    		</div>
+    		<div class="col-sm">
+    			<p>Contributers:<br>
+          	<a href="https://github.com/codyhertz">Cody Hertz</a> <br>
+					  <a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a> <br>
+					  <a href="https://github.com/danielmclain6">Daniel Mclain</a> <br>
+					  <a href="https://github.com/TylenM">TylenM</a> <br>
+            <a href="">Darrick Troung</a> <br>
+					  <a href="https://github.com/liamcclane">Lia McClane</a> <br></p>
+    		</div>
+    	</div>
+    </footer>
+>>>>>>> master
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
