@@ -70,7 +70,7 @@ public class CheckoutBookServlet extends HttpServlet {
 //			System.out.println(id);
 			// check it anyone is in session
 			Patron p = patronDao.getPatronById(id);
-			Book b = bookDao.getBookByIsbn(request.getParameter("isbn"));
+			Book b = bookDao.getBookByIsbn(request.getParameter("book_isbn"));
 			
 //			System.out.println("book " + b);
 //			System.out.println("isbn " + b.getIsbn());

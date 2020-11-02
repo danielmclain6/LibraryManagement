@@ -118,7 +118,7 @@
 						<a href="" class="btn btn-danger">Book Unavailable</a>
 					</c:if>
 					<c:if test="${!book.rented}">
-						<a href="checkout_book?isbn=${book.isbn}"
+						<a href="checkout_book?book_isbn=${book.isbn}"
 							class="btn-checkout">Checkout</a>
 					</c:if>
 				</c:if>
