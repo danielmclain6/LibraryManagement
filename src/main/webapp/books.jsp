@@ -49,8 +49,7 @@
 				</h4>
 				
 				<img alt="book image" src="./static/images/book.png">
-				<p 
-					style="text-align: left;  color: white; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis">
+				<p class="descr text-white">
 					<c:out value="${book.descr}" ></c:out> 
 				</p>
 				
