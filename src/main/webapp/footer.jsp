@@ -1,6 +1,6 @@
 
     
-<div class="container mt-3">
+<div class="container mt-3" style="padding-top:100px;">
     <footer>
     	<div class="row align-items-center justify-content-around text-center">
     		<div class="col-sm">
@@ -9,11 +9,11 @@
     		</div>
     		<div class="col-sm">
     			<p>Contributers:<br>
-          	<a href="https://github.com/codyhertz">Cody Hertz</a> <br>
+          			  <a href="https://github.com/codyhertz">Cody Hertz</a> <br>
 					  <a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a> <br>
 					  <a href="https://github.com/danielmclain6">Daniel Mclain</a> <br>
 					  <a href="https://github.com/TylenM">TylenM</a> <br>
-            <a href="">Darrick Troung</a> <br>
+            		  <a href="">Darrick Troung</a> <br>
 					  <a href="https://github.com/liamcclane">Lia McClane</a> <br></p>
     		</div>
     	</div>
