@@ -1,31 +1,23 @@
 
 #book_card {
-	background-color: black;
-	height: 100vh;
-	padding-top: 25vh;
+	padding:30px 0px;
 }
 
 #article {
-	width: 50%;
-	margin:0 auto;
-	padding: 100px;
+	padding:50px 0px 100px;
+	min-height: 200px;
 	background-image: url("../images/landingImage1.jpg");
 	background-position: center;
 	background-size: cover;
 }
 
-#book_card article {
-	padding: 30px;
-	text-align: center;
-	border-radius: 30px;
-	background-color: rgba(255, 255, 255, .9);
-	
-}
 
 #book_descr {
-	min-height: 100px;
+	min-height: 300px;
 }
 
-#isbn {
+.isbn {
 	text-align:right;
+	color:white;
+	width: 66%;
 }
