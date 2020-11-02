@@ -1,28 +1,23 @@
 
+    
 <div class="container mt-3">
-	<footer>
-		<div class="row align-items-center justify-content-around text-center">
-			<div class="col">
-				<p>Help</p>
-				<p>
-					<a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a>
-				</p>
-			</div>
-			<div class="col">
-				<div class="row"><p class="text-center">Contributers:</p></div>
-				<div class="row justify-content-around m-3">
-					<a class="col" href="https://github.com/codyhertz">Cody Hertz</a>
-					<a class="col" href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a>
-					<a class="col" href="https://github.com/danielmclain6">Daniel Mclain</a>
-					<a class="col" href="https://github.com/TylenM">TylenM</a>
-				</div>
-				<div class="row justify-content-center m-3">
-					<a class="col" href="">Darrick Troung</a>
-					<a class="col" href="https://github.com/liamcclane">Lia McClane</a>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <footer>
+    	<div class="row align-items-center justify-content-around text-center">
+    		<div class="col-sm">
+    			<p>Help</p>
+    			<p><a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a></p>
+    		</div>
+    		<div class="col-sm">
+    			<p>Contributers:<br>
+          	<a href="https://github.com/codyhertz">Cody Hertz</a> <br>
+					  <a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a> <br>
+					  <a href="https://github.com/danielmclain6">Daniel Mclain</a> <br>
+					  <a href="https://github.com/TylenM">TylenM</a> <br>
+            <a href="">Darrick Troung</a> <br>
+					  <a href="https://github.com/liamcclane">Lia McClane</a> <br></p>
+    		</div>
+    	</div>
+    </footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
