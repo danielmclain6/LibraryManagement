@@ -29,7 +29,7 @@
 							<c:out value="${book.title}"></c:out>
 						</p> --%>
 						<br>
-						<p style="text-align: left">
+						<p style="text-align: right">
 							Account:
 							<c:if
 								test="${patron.account_frozen == true || patron.account_frozen == null }">
