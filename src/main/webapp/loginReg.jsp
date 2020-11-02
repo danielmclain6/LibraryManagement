@@ -14,37 +14,36 @@
     <br>
     <br>
     <br>
-    <div class="row">
-	    <div class="col border rounded m-2">
+    <div class="row justify-content-around">
+	    <div class="col-5 border rounded p-3 frosty-bg">
 	        <h1>Login</h1>
 	        <c:if test="${signinMsg}">
 	        	<h3 class="text-danger">Please sign in to checkout a book</h3>
 	        </c:if>
 	        <form method="post" action="">
 	            <div class="form-group">
-	              <label class="text-white" for="exampleInputEmail1">Email address</label>
+	              <label class="text-white" for="exampleInputEmail1">Username</label>
 	              <input type="text" class="form-control" name="username"
 	              id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username">
-	              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	            </div>
 	            <div class="form-group">
 	              <label class="text-white" for="exampleInputPassword1">Password</label>
 	              <input type="password" class="form-control" name="password"
 	              id="exampleInputPassword1" placeholder="Password">
 	            </div>
-
-	            <button type="submit" class="btn btn-primary login-btn">Submit</button>
+				<div class="row justify-content-end mt-2 mr-2">
+		            <button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 	          </form>
 	    </div>
-	    <div class="col-md-2"></div>
-	    <div class="col border rounded m-2">
+	    <div class="col-5 border rounded frosty-bg p-3">
 	        <h1>Register</h1>
 	        <form method="post" action="register">
 	            <div class="form-group">
 	              <label class="text-white" for="exampleInputEmail1">Username</label>
 	              <input type="text" class="form-control" name="username"
 	              id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-	              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	              <small id="emailHelp" class="form-text text-muted">username needs to be unique</small>
 	            </div>
 	            <div class="form-group">
 	              <label class="text-white" for="first_name">First Name</label>
@@ -63,20 +62,18 @@
 	              <input type="password" class="form-control" name="password"
 	              id="exampleInputPassword1" placeholder="Password">
 	            </div>
-	            <div class="form-check login-radio">
-	              <div class="row">
+	            <div class="form-check">
+	              <div class="row ml-2">
 	                    <input type="radio" name="user_type" value="patron" class="form-check-input" id="exampleCheck1" checked>
 	                    <label class="form-check-label text-white" for="exampleCheck1">Patron</label>
 	                </div>
-	                <div class="row">
+	                <div class="row ml-2">
 	                    <input type="radio" name="user_type" value="librarian" class="form-check-input" id="exampleCheck1">
 	                    <label class="form-check-label text-white" for="exampleCheck1">Librarian</label>
 	                </div>
 	            </div>
-	            <br>
-	            <br>
-	            <div class="row">
-	          	  <button type="submit" class="btn btn-primary login-btn">Submit</button>
+	            <div class="row justify-content-end m-2">
+	          	  <button type="submit" class="btn btn-primary">Submit</button>
 	          	</div>
 	         </form>
 	    </div>

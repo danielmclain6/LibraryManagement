@@ -3,37 +3,67 @@
 
 <div class="container pt-5">
 	<div class="row justify-content-around">
-		<div class="col-5 border rounded p-5">
-			<h1>My Profile</h1>
-			<hr>
-			<p>
-				Name:
-				<c:out value="${patron.first_name}"></c:out>
-				<c:out value="${patron.last_name}"></c:out>
-			</p>
+	
+		<div id="patron_card" class="col-5 p-5 rounded">
+			<img alt="pumpkin" src="static/images/pumpkinWithHat.png"
+				style="height: 110px;" id="profile_picture">
 
-			<p>
-				Username:
-				<c:out value="${patron.username}"></c:out>
-			</p>
-			<p>
-				password:
-				<c:out value="${patron.password}"></c:out>
-			</p>
-			<p>
-				account_frozen:
-				<c:out value="${patron.account_frozen}"></c:out>
-			</p>
+			<div class="container">
 
-			<a href="freeze_account?id=${patron.id}">
-				<c:if test="${patron.account_frozen && isLibrarian}">
-				Reactivate
-			</c:if>
-				<c:if test="${!patron.account_frozen && isLibrarian}">
-				Freeze Account
-			</c:if>
-			</a>
+				<div id="patron_article">
+
+					<%-- <p id="patron_id" class="text-light" ; style="text-align: center">
+						Username:
+						<c:out value="${patron.username}"></c:out>
+					</p> --%>
+					<article class="shadow">
+						<h5>
+
+							<c:out value="${patron.first_name}"></c:out>
+							<c:out value="${patron.last_name}"></c:out>
+						</h5>
+
+						<%-- <p class="pt-5"style="text-align: center">
+							Currently Reading: <br>
+
+							<c:out value="${book.title}"></c:out>
+						</p> --%>
+						<br>
+						<p style="text-align: left">
+							Account:
+							<c:if
+								test="${patron.account_frozen == true || patron.account_frozen == null }">
+								<span style="color: red"> Deactivated </span>
+							</c:if>
+
+							<c:if test="${patron.account_frozen == false}">
+								<span style="color: green"> Active </span>
+
+							</c:if>
+						</p>
+
+
+						<a href="freeze_patron?id=${patron.id}">
+							<c:if
+								test="${patron.account_frozen == true || patron.account_frozen == null && isLibrarian}">
+								<button type="button" class="btn btn-success btn">
+									<span style="color: black"> Activate</span>
+								</button>
+							</c:if>
+							<c:if test="${patron.account_frozen == false && isLibrarian}">
+
+								<button type="button" class="btn btn-danger btn">
+									<span style="color: black"> Deactivate</span>
+								</button>
+							</c:if>
+						</a>
+
+					</article>
+				</div>
+			</div>
 		</div>
+
+		
 		<img class="col-sm-5 rounded" alt="books image"
 			src="./static/images/pumpkinPatch.jpg">
 	</div>
@@ -50,11 +80,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${ currentbooks == null }">
-					<h4>No checkouts currently</h4>
+				<c:if test="${ currentbooks.size() ==0 }">
+					<tr><td class="text-white font-weight-bold">No checkouts currently</td></tr>
 				</c:if>
 
-				<c:if test="${ currentbooks != null }">
+				<c:if test="${ currentbooks.size() > 1 ||currentbooks != null }">
 					<c:forEach var="book" items="${currentbooks}">
 						<tr>
 							<th scope="row" class="text-white">
@@ -89,8 +119,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${ bookcheckouts.size() == 0 }">
-					<h1>No history</h1>
+				<c:if test="${ historybookcheckouts.size() == 0 }">
+					<tr><td class="text-white font-weight-bold">No checkout history</td></tr>
 				</c:if>
 				<c:if test="${ historybookcheckouts.size() != 0 }">
 					<c:forEach var="history" items="${historybookcheckouts}">

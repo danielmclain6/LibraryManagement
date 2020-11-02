@@ -98,53 +98,54 @@
 						
 				</c:if>
 
-			</div>
-		</div>
-		</div>
-
-
-<div class="modal fade" id="add-modal" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add Modal</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form method="post" action="books?action=add">
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="isbnInput">ISBN</label>
-						<input type="text" class="form-control" name="isbn" id="isbnInput"
-							placeholder="isbn" pattern=".{10,10}"
-							title="ISBN must be 10 characters">
 					</div>
-					<div class="form-group">
-						<label for="titleInput">Title</label>
-						<input type="text" class="form-control" name="title"
-							id="titleInput" placeholder="title">
-					</div>
-					<div class="form-group">
-						<label for="descrInput">Description</label>
-						<textarea class="form-control" name="descr" id="descrInput"
-							placeholder="descr"></textarea>
-					</div>
-
 				</div>
+			</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+
+			<div class="modal fade" id="add-modal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Add Modal</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form method="post" action="books?action=add">
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="isbnInput">ISBN</label>
+									<input type="text" class="form-control" name="isbn"
+										id="isbnInput" placeholder="isbn" pattern=".{10,10}"
+										title="ISBN must be 10 characters">
+								</div>
+								<div class="form-group">
+									<label for="titleInput">Title</label>
+									<input type="text" class="form-control" name="title"
+										id="titleInput" placeholder="title">
+								</div>
+								<div class="form-group">
+									<label for="descrInput">Description</label>
+									<textarea class="form-control" name="descr" id="descrInput"
+										placeholder="descr"></textarea>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Save
+									changes</button>
+							</div>
+						</form>
+					</div>
 				</div>
-			</form>
-		</div>
-	</div>
-</nav>
-
+	</nav>
+	<%@ include file="googyHeader.jsp"%>
 
 </header>
 

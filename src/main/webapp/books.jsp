@@ -3,20 +3,38 @@
 
 <div class="container">
 
-	<hr>
-	<hr>
-	<hr>
-	<hr>
-	<a href="/LibraryManager/books?which_filter=all_rented">All rented
-		books</a>
-	<a href="/LibraryManager/books?which_filter=all_available">all_available</a>
-	<c:if test="${ isLibrarian }">
-        I am a librarian
-    </c:if>
-	<c:if test="${ !isLibrarian }">
-        I am a NOT librarian
-    </c:if>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="static/images/pumpkin.jpg" class="d-block w-100" alt="pumpkin">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/image1.jpg" class="d-block w-100" alt="spooky desk">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/jackolanterns.jpg" class="d-block w-100" alt="jacko lanterns ">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
+	<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all">All Books</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_rented">Rented Books</a>
+	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_available">Available Books</a>
+  </div>
+</div>
 	<div class="row p-5">
 		<c:forEach var="book" items="${books}">
 			<hr>
@@ -26,15 +44,15 @@
 					isbn =
 					<c:out value="${book.isbn}"></c:out>
 				</p> --%>
-				<h4>
+				<h4 class="text-white">
 					<c:out value="${book.title}"></c:out>
 				</h4>
 				
 				<img alt="book image" src="./static/images/book.png">
-				<p
-					style="text-align: left; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis">
-					<c:out value="${book.descr}"></c:out>
+				<p class="descr text-white">
+					<c:out value="${book.descr}" ></c:out> 
 				</p>
+				
 				<%-- <p>
 					rented =
 					<c:out value="${book.rented}"></c:out>
@@ -88,7 +106,7 @@
 												<textarea class="form-control" name="descr" id="descrInput"
 													placeholder="descr"><c:out value="${book.descr}"></c:out></textarea>
 											</div>
-
+											
 										</div>
 
 										<div class="modal-footer">
@@ -108,7 +126,7 @@
 
 				<c:if test="${!isLibrarian}">
 					<c:if test="${book.rented}">
-						<a href="" class="btn btn-outline-danger">Book Unavailable</a>
+						<a href="" class="btn btn-danger">Book Unavailable</a>
 					</c:if>
 					<c:if test="${!book.rented}">
 						<a href="checkout_book?isbn=${book.isbn}"

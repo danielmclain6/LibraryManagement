@@ -15,6 +15,7 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/stylesheets/header.css">
+    <link rel="stylesheet" href="static/stylesheets/googyAnimation.css">
     <link rel="stylesheet" href="static/stylesheets/footer.css">
     <link rel="stylesheet" href="static/stylesheets/index.css">
     <link rel="stylesheet" href="static/stylesheets/book.css">

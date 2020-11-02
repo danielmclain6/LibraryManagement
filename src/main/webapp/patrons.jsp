@@ -3,7 +3,7 @@
 
 <div class="container pt-5">
 	<div class="row justify-content-around">
-		<div class="col-sm-5 border rounded m-1 frosty-bg" id="patrons-table">
+		<div class="col-sm-5 border rounded m-1 frosty-bg p-3" id="patrons-table">
 
 			<div class="dropdown m-1">
 				<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
@@ -81,7 +81,7 @@
 		<div class="col-sm-5 m-1">
 			<div class="row text-center justify-content-center"
 				id="preview-patron-row">
-				<div class="col-12 border rounded preview-parton frosty-bg pb-4">
+				<div class="col-12 border rounded preview-parton frosty-bg p-3 pb-4">
 					<c:if test="${patron == null }">
 						<h1>Click on someone</h1>
 					</c:if>
@@ -106,7 +106,7 @@
 											<c:out value="${patron.first_name}"></c:out>
 											<c:out value="${patron.last_name}"></c:out>
 										</p>
-										<p>Account:</p>
+										<p>Status:</p>
 										<c:if test="${patron.account_frozen}">
 											<p class="text-danger">FROZEN</p>
 										</c:if>
@@ -125,7 +125,7 @@
 									</c:if>
 									<c:if test="${!patron.account_frozen}">
 										<a href="/LibraryManager/freeze_patron?id=${patron.id}"
-											class="btn btn-sm btn-outline-danger"> Freeze</a>
+											class="btn btn-sm btn-danger"> Freeze</a>
 									</c:if>
 								</div>
 							</div>
