@@ -50,10 +50,10 @@
 					
 				</div>
 				<div class="col-md-4 ml-auto">
-				<ul class="navbar-nav">	
+				<ul class="navbar-nav aligin-items-center">	
 				
 				<c:if test="${context != '/LibraryManager/books.jsp' }">
-					<li class="nav-item nav-link">
+					<li class="nav-item nav-link ml-auto">
 						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
 					</li>
 				</c:if>
@@ -73,31 +73,27 @@
 							class="btn btn-secondary" data-toggle="modal"
 							data-target="#add-modal">Add Book</a></li>
 				</c:if>
-			</ul>
 					<c:if test="${user == null}">
 						<c:if test="${context != '/LibraryManager/loginReg.jsp'}">
-							<ul class="navbar-nav">
-							<li class="nav-item nav-link">
+							<li class="nav-item nav-link ml-auto">
 								<a class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
 							</li>
-							</ul>
 						</c:if>
-						<div class="ml-auto">
+						<li class="nav-item nav-link welcome-sm">
     						<span class="navbar-text">Welcome!</span>
-    					</div>
+    					</li>
 					</c:if>
 					
 				<c:if test="${user != null}">
-					<ul class="navbar-nav">
-						<li class="nav-item nav-link">
+						<li class="nav-item nav-link ml-auto">
 							<a class="btn btn-outline-primary" href="/LibraryManager/logout">Log Out</a>
 						</li>
-					</ul>
-						<span class="navbar-text">Welcome,
+						<span class="navbar-text welcome-sm">Welcome,
 						<c:out value="${user.username}"></c:out>
 						
 				</c:if>
 
+					</ul>
 					</div>
 				</div>
 			</div>

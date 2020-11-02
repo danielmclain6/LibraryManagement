@@ -1,40 +1,6 @@
 
     
-<div class="container mt-3">
-<<<<<<< HEAD
-	<footer>
-		<div class="row align-items-center justify-content-around text-center">
-			<div class="col-4">
-				<p>Help</p>
-				<p>
-					<a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a>
-				</p>
-			</div>
-			<div class="col-4">
-				<ul>
-					<li>
-						<a href="https://github.com/codyhertz">Cody Hertz</a>
-					</li>
-					<li>
-						<a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a>
-					</li>
-					<li>
-						<a href="https://github.com/danielmclain6">Daniel Mclain</a>
-					</li>
-					<li>
-						<a href="https://github.com/TylenM">TylenM</a>
-					</li>
-					<li>
-						<a href="">Darrick Troung</a>
-					</li>
-					<li>
-						<a href="https://github.com/liamcclane">Lia McClane</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</footer>
-=======
+<div class="container mt-3" style="padding-top:100px;">
     <footer>
     	<div class="row align-items-center justify-content-around text-center">
     		<div class="col-sm">
@@ -43,16 +9,15 @@
     		</div>
     		<div class="col-sm">
     			<p>Contributers:<br>
-          	<a href="https://github.com/codyhertz">Cody Hertz</a> <br>
+          			  <a href="https://github.com/codyhertz">Cody Hertz</a> <br>
 					  <a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a> <br>
 					  <a href="https://github.com/danielmclain6">Daniel Mclain</a> <br>
 					  <a href="https://github.com/TylenM">TylenM</a> <br>
-            <a href="">Darrick Troung</a> <br>
+            		  <a href="">Darrick Troung</a> <br>
 					  <a href="https://github.com/liamcclane">Lia McClane</a> <br></p>
     		</div>
     	</div>
     </footer>
->>>>>>> master
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

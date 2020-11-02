@@ -60,7 +60,7 @@ header .navbar{
 	box-shadow: 0px 3px 3px 0px #000000 25%;
 }
 
-.navbar-text .page-title {
+.page-title {
 	font-family: 'Roboto', sans-serif;
 	font-size: 200%;
 	font-style: normal;
@@ -72,19 +72,18 @@ header .navbar{
 	text-shadow: 0px 2px 2px RGBA(63,107,50,.25);
 }
 
-a {
+nav a {
 	color: #FFFFFF;
 }
 
-a::hover {
+nav a::hover {
 	color: #6BB543;
 }
 
-a::visited, a::active {
+nav a::visited, a::active {
 	color: #878891;
 }
-
-footer {
-	color: #535151;
+.welcome-sm{
+	font-weight: 400;
+	text-shadow: 0px 2px 2px #0E1122;	
 }
-
