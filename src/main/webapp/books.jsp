@@ -1,9 +1,10 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div class="container">
+<div class="container" style="margin-top:-200px;">
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 500px;
+	margin: 0 auto;">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="static/images/pumpkin.jpg" class="d-block w-100" alt="pumpkin">
@@ -25,8 +26,10 @@
   </a>
 </div>
 
-	<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<div class="dropdown ml-3">
+  <button class="btn btn-secondary dropdown-toggle" type="button" 
+  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
+  aria-expanded="false">
     Filter
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -35,15 +38,9 @@
 	<a class="dropdown-item" href="/LibraryManager/books?which_filter=all_available">Available Books</a>
   </div>
 </div>
-	<div class="row p-5">
+	<div class="row justify-content-around">
 		<c:forEach var="book" items="${books}">
-			<hr>
-
-			<div class="col-sm-3 books_card">
-				<%-- <p>
-					isbn =
-					<c:out value="${book.isbn}"></c:out>
-				</p> --%>
+			<div class="col-sm-3 m-1 books_card">
 				<h4 class="text-white">
 					<c:out value="${book.title}"></c:out>
 				</h4>
@@ -52,18 +49,7 @@
 				<p class="descr text-white">
 					<c:out value="${book.descr}" ></c:out> 
 				</p>
-				
-				<%-- <p>
-					rented =
-					<c:out value="${book.rented}"></c:out>
-				</p>
-				<p>
-					added_to_library =
-					<c:out value="${book.added_to_library}"></c:out>
-				</p> --%>
-				
-				
-				<a class="btn btn-secondary" href="book?isbn=${book.isbn}">Book Details</a>
+				<a class="btn btn-outline-secondary" href="book?isbn=${book.isbn}">Book Details</a>
 				<hr>
 
 				<%-- <p class="text-danger">
@@ -119,8 +105,11 @@
 								</div>
 							</div>
 						</div>
-						<a href="delete_book?isnb=${book.isbn}"
+						<!-- 
+						 <a href="delete_book?isnb=${book.isbn}"
 							class="btn btn-outline-danger">Delete Book</a>
+						 -->
+						
 					</c:if>
 				</c:if>
 

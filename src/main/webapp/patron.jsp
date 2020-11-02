@@ -1,7 +1,7 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div class="container pt-5">
+<div class="container" style="margin-top:-200px;">
 	<div class="row justify-content-around">
 	
 		<div id="patron_card" class="col-5 p-5 rounded">
