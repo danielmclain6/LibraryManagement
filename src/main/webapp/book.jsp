@@ -1,47 +1,45 @@
 <%@ include file="header.jsp"%>
 <%@ include file="navBar.jsp"%>
 
-<div id="book_card" class="container-fluid">
 
-	<div class="container">
-
-		<div id="article">
-			<p id="isbn" class="text-light">
-				ISBN:
-				<c:out value="${book.isbn}"></c:out>
-			</p>
-			<article class="shadow">
-
-				<h2>
-					<c:out value="${book.title}"></c:out>
-				</h2>
-				<p class="text-dark" id="book_descr">
-					<c:out value="${book.descr}"></c:out>
-				</p>
-
-				<div class="row d-flex justify-content-between">
-					<%-- <p>
-				<c:out value="${book.rented}"></c:out>
-			</p> --%>
-					<p class="text-dark">
-						added to library: <br>
-						<c:out value="${book.added_to_library}"></c:out>
+	<div class="container" id="book_card">
+		<div class="row justify-content-center">
+			<div class="col-9 border rounded" id="article">
+				<div class="row justify-content-center">
+					<p class="text-end isbn">
+						ISBN: <c:out value="${book.isbn}"></c:out>
 					</p>
+					<div class="col-8 frosty-bg" style="padding: 40px;">
+						<h2 class="text-center ssp-xiketic"><c:out value="${book.title}"></c:out></h2>
+						<p class="ssp-xiketic align-middle" id="book_descr">
+							<c:out value="${book.descr}"></c:out>
+						</p>
+						<div class="row justify-content-between p-4">
+							<div class="col">
+								<p class="ssp-xiketic">
+									added to library: <br>
+									<c:out value="${book.added_to_library}"></c:out>
+								</p>
+							</div>
 					<c:if test="${book.rented}">
-						<a href="">Book not available</a>
+						<div class="col">
+							<a class="btn btn-static btn-outline-danger" href="">Book not available</a>
+						</div>
 					</c:if>
 					<c:if test="${!book.rented && !isLibrarian}">
-						<a href="checkout_book?book_isbn=${book.isbn}&user_id=${user.id}">
-							<button class="btn btn-info shadow">Check Me Out</button>
-						</a>
+						<div class="col">
+							<a href="checkout_book?book_isbn=${book.isbn}&user_id=${user.id}" 
+							   class="btn btn-info shadow">Check Me Out
+							</a>
+						</div>
 					</c:if>
 
 					<c:if test="${isLibrarian}">
-						<a href="edit_book?isbn=${book.isbn}"
-						    data-toggle="modal"
-							data-target="#editModal"><button class="btn btn-info">Edit</button></a>
-						
-						
+						<div class="col text-right">
+							<a href="edit_book?isbn=${book.isbn}"
+							    data-toggle="modal"
+								data-target="#editModal" class="btn btn-info">Edit</a>
+						</div>
 						<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
@@ -83,10 +81,15 @@
 							</div>
 						</div>
 					</c:if>
-				</div>
-			</article>
+						
+						
+						</div>
+					</div>
+				</div>				
+			
+			</div>
 		</div>
-	</div>
+
 </div>
 
 <%@ include file="footer.jsp"%>
