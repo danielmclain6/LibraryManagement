@@ -7,15 +7,15 @@
   }
   a,
   a:visited {
-    color: #ddd;
+    /* color: #ddd; */
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255, 0.4);
+    /* border-bottom: 1px solid rgba(255,255,255, 0.4); */
     transition: all .3s ease-out;
   }
   a:hover,
   a:focus {
     color: #fff;
-    border-bottom-color: rgba(255,255,255, 1);
+    /* border-bottom-color: rgba(255,255,255, 1); */
   }
   
   

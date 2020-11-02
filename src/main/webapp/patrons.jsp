@@ -118,7 +118,7 @@
 								<div class="row justify-content-around"
 									id="preview-patron-card-row">
 									<a href="/LibraryManager/patron?id=${patron.id}"
-										class="btn btn-sm btn-primary">See Account</a>
+										class="btn btn-sm btn-primary text-dark">See Account</a>
 									<c:if test="${patron.account_frozen}">
 										<a href="/LibraryManager/freeze_patron?id=${patron.id}"
 											class="btn btn-sm btn-success"> UnFreeze</a>

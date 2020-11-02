@@ -4,11 +4,11 @@
     <footer>
     	<div class="row align-items-center justify-content-around text-center">
     		<div class="col-sm">
-    			<p>Help</p>
+    			<p class="text-secondary">Help</p>
     			<p><a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a></p>
     		</div>
     		<div class="col-sm">
-    			<p>Contributers:<br>
+    			<p class="text-secondary">Contributers:<br>
           			  <a href="https://github.com/codyhertz">Cody Hertz</a> <br>
 					  <a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a> <br>
 					  <a href="https://github.com/danielmclain6">Daniel Mclain</a> <br>
