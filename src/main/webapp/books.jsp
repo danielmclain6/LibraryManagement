@@ -44,15 +44,15 @@
 					isbn =
 					<c:out value="${book.isbn}"></c:out>
 				</p> --%>
-				<h4>
+				<h4 class="text-white">
 					<c:out value="${book.title}"></c:out>
 				</h4>
 				
 				<img alt="book image" src="./static/images/book.png">
-				<p
-					style="text-align: left; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis">
-					<c:out value="${book.descr}"></c:out>
+				<p class="descr text-white">
+					<c:out value="${book.descr}" ></c:out> 
 				</p>
+				
 				<%-- <p>
 					rented =
 					<c:out value="${book.rented}"></c:out>
