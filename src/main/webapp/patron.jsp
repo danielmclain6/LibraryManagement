@@ -43,7 +43,7 @@
 						</p>
 
 
-						<a href="freeze_account?id=${patron.id}">
+						<a href="freeze_patron?id=${patron.id}">
 							<c:if
 								test="${patron.account_frozen == true || patron.account_frozen == null && isLibrarian}">
 								<button type="button" class="btn btn-success btn">
@@ -80,11 +80,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${ currentbooks == null }">
-					<h4>No checkouts currently</h4>
+				<c:if test="${ currentbooks.size() ==0 }">
+					<tr><td class="text-white font-weight-bold">No checkouts currently</td></tr>
 				</c:if>
 
-				<c:if test="${ currentbooks != null }">
+				<c:if test="${ currentbooks.size() > 1 ||currentbooks != null }">
 					<c:forEach var="book" items="${currentbooks}">
 						<tr>
 							<th scope="row" class="text-white">
@@ -119,8 +119,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:if test="${ bookcheckouts.size() == 0 }">
-					<h1>No history</h1>
+				<c:if test="${ historybookcheckouts.size() == 0 }">
+					<tr><td class="text-white font-weight-bold">No checkout history</td></tr>
 				</c:if>
 				<c:if test="${ historybookcheckouts.size() != 0 }">
 					<c:forEach var="history" items="${historybookcheckouts}">
