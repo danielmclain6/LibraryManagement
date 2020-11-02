@@ -9,7 +9,7 @@
 			<a class="btn index-buttons book-button btn-lg" href="/LibraryManager/books"></a>
 		</div>
 		<div class='col text-center floaty-divs'>
-			<h1 style="color:white">LogIn</h1>
+			<h1 style="color:white">Login</h1>
 			<a class="btn index-buttons login-button btn-lg" href="/LibraryManager/login" id='login-button'></a>
 		</div>
 	</div>

@@ -75,7 +75,7 @@
 						<c:if test="${user == null}">
 							<c:if test="${context != '/LibraryManager/loginReg.jsp'}">
 								<li class="nav-item nav-link ml-auto"><a
-										class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
+										class="btn btn-outline-primary" href="/LibraryManager/login">Login</a>
 								</li>
 							</c:if>
 							<li class="nav-item nav-link welcome-sm"><span
