@@ -2,24 +2,33 @@
 <div class="container mt-3">
 	<footer>
 		<div class="row align-items-center justify-content-around text-center">
-			<div class="col">
+			<div class="col-4">
 				<p>Help</p>
 				<p>
 					<a href="mailto:help@spookyspooky.edu">help@spookyspooky.edu</a>
 				</p>
 			</div>
-			<div class="col">
-				<div class="row"><p class="text-center">Contributers:</p></div>
-				<div class="row justify-content-around m-3">
-					<a class="col" href="https://github.com/codyhertz">Cody Hertz</a>
-					<a class="col" href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a>
-					<a class="col" href="https://github.com/danielmclain6">Daniel Mclain</a>
-					<a class="col" href="https://github.com/TylenM">TylenM</a>
-				</div>
-				<div class="row justify-content-center m-3">
-					<a class="col" href="">Darrick Troung</a>
-					<a class="col" href="https://github.com/liamcclane">Lia McClane</a>
-				</div>
+			<div class="col-4">
+				<ul>
+					<li>
+						<a href="https://github.com/codyhertz">Cody Hertz</a>
+					</li>
+					<li>
+						<a href="https://gitlab.com/KamiYugure">Danielle Bequeaith</a>
+					</li>
+					<li>
+						<a href="https://github.com/danielmclain6">Daniel Mclain</a>
+					</li>
+					<li>
+						<a href="https://github.com/TylenM">TylenM</a>
+					</li>
+					<li>
+						<a href="">Darrick Troung</a>
+					</li>
+					<li>
+						<a href="https://github.com/liamcclane">Lia McClane</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</footer>
