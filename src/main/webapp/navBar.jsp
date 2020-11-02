@@ -1,16 +1,27 @@
 <header>
-	<nav class="navbar navbar-expand-sm navbar-dark">
-		<div class="container">
-			<div class="row justify-content-between align-items-center">
-				<div class="col-md-4">
-					<a class="navbar-brand navbar-brand-img" href="/LibraryManager">
-						<img alt="pumpkin" src="static/images/pumpkinWithHat.png">
+<nav class="navbar navbar-expand-sm navbar-dark">
+	<div class="container">
+		<div class="row justify-content-between align-items-center">
+		<div class="col-md-4">
+		<a class="navbar-brand navbar-brand-img" href="/LibraryManager">
+			<img alt="pumpkin" src="static/images/pumpkinWithHat.png">
 
-					</a>
-					<a href="index.jsp">
-						<span class="navbar-text text-center display-2" id="navSite">
-							Spooky Spooky Library</span>
-					</a>
+		</a>
+		<a href="index.jsp">
+			<span class="navbar-text text-center display-2" id="navSite"> Spooky Spooky Library</span>
+		</a>
+		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+				<div class="col-md-4 mx-auto">
+					  %><span>Page Title</span>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarNavAltMarkup"
