@@ -44,7 +44,7 @@
 					isbn =
 					<c:out value="${book.isbn}"></c:out>
 				</p> --%>
-				<h4>
+				<h4 class="text-white">
 					<c:out value="${book.title}"></c:out>
 				</h4>
 				
