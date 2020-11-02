@@ -21,7 +21,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
 				<div class="col-md-4 mx-auto">
-					<span>Page Title</span>
+					  %><span>Page Title</span>
 				</div>
 				<div class="col-md-4 ml-auto">
 				<ul class="navbar-nav">	
