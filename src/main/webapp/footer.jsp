@@ -17,12 +17,8 @@
     		</div>
     		<div class="col-sm">
     			<p>Contributers:<br>
-    				Darrick<br>
-    				Lia<br>
-    				Cody<br>
-    				Danielle<br>
-    				Daniel<br>
-    				Tylen</p>
+    				Darrick, Lia, Cody,<br>
+    				Danielle, Daniel, Tylen</p>
     		</div>
     	</div>
     </footer>

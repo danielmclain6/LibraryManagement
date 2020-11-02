@@ -18,17 +18,45 @@
 		</button>
 		
 		
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="collapse navbar-collapse">
+		<!-- Checking the current page url to update the displayed page title -->
+				<c:set var="context" value="${pageContext.request.requestURI}" />
 
-				<div class="col-md-4 mx-auto">
-					<span>Page Title</span>
+				<c:if test="${context == '/LibraryManager/loginReg.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Login</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/patron.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Patron Account</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/books.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Books</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/patrons.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Patron</span>
+                        </div>
+                    </c:if>
+				<c:if test="${context == '/LibraryManager/book.jsp'}">
+                        <div class="col-md-4 mx-auto">
+                            <span class="navbar-text page-title">Book Info</span>
+                        </div>
+                    </c:if>
+					
 				</div>
 				<div class="col-md-4 ml-auto">
 				<ul class="navbar-nav">	
+				
+				<c:if test="${context != '/LibraryManager/books.jsp' }">
 					<li class="nav-item nav-link">
 						<a class="btn btn-outline-primary" href="/LibraryManager/books">Books</a>
 					</li>
-					
+				</c:if>
 					
 				<c:if test="${user!=null && !isLibrarian}">
 					<li class="nav-item nav-link"><a
@@ -47,17 +75,18 @@
 				</c:if>
 			</ul>
 					<c:if test="${user == null}">
-						<ul class="navbar-nav">
-						<li class="nav-item nav-link">
-							<a class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
-						</li>
-						</ul>
+						<c:if test="${context != '/LibraryManager/loginReg.jsp'}">
+							<ul class="navbar-nav">
+							<li class="nav-item nav-link">
+								<a class="btn btn-outline-primary" href="/LibraryManager/login">LogIn</a>
+							</li>
+							</ul>
+						</c:if>
 						<div class="ml-auto">
     						<span class="navbar-text">Welcome!</span>
     					</div>
 					</c:if>
 					
-				<!-- class="col navbar-nav" -->
 				<c:if test="${user != null}">
 					<ul class="navbar-nav">
 						<li class="nav-item nav-link">
